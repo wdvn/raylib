@@ -1,0 +1,6 @@
+#pass "-I./include -L./lib -lraylib -lGL -lX11 -lpthread -lm -ldl -Wl,-rpath,./lib"
+#pass "-stdlib=libc++"
+
+fn main(){
+    InitWindow(600,400,"1")
+}

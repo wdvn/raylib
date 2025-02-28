@@ -1,0 +1,48 @@
+// cpp use "./raycpp/include/AudioDevice.hpp"
+// cpp use "./raycpp/include/AudioStream.hpp"
+// cpp use "./raycpp/include/AutomationEventList.hpp"
+// cpp use "./raycpp/include/BoundingBox.hpp"
+// cpp use "./raycpp/include/Camera2D.hpp"
+// cpp use "./raycpp/include/Camera3D.hpp"
+// cpp use "./raycpp/include/Color.hpp"
+// cpp use "./raycpp/include/FileData.hpp"
+// cpp use "./raycpp/include/FileText.hpp"
+// cpp use "./raycpp/include/Font.hpp"
+// cpp use "./raycpp/include/Functions.hpp"
+// cpp use "./raycpp/include/Gamepad.hpp"
+// cpp use "./raycpp/include/Image.hpp"
+// cpp use "./raycpp/include/Keyboard.hpp"
+// cpp use "./raycpp/include/Material.hpp"
+// cpp use "./raycpp/include/Matrix.hpp"
+// cpp use "./raycpp/include/Mesh.hpp"
+// cpp use "./raycpp/include/MeshUnmanaged.hpp"
+// cpp use "./raycpp/include/ModelAnimation.hpp"
+// cpp use "./raycpp/include/Model.hpp"
+// cpp use "./raylib/src/config.h"
+// cpp use "./raylib/src/raudio.c"
+// cpp use "./raylib/src/raylib.h"
+// cpp use "./raylib/src/raymath.h"
+// cpp use "./raylib/src/rcamera.h"
+// cpp use "./raylib/src/rcore.c"
+// cpp use "./raylib/src/rgestures.h"
+// cpp use "./raylib/src/rglfw.c"
+// cpp use "./raylib/src/rlgl.h"
+// cpp use "./raylib/src/rmodels.c"
+// cpp use "./raylib/src/rshapes.c"
+// cpp use "./raylib/src/rtext.c"
+// cpp use "./raylib/src/rtextures.c"
+// cpp use "./raylib/src/utils.c"
+// cpp use "./raylib/src/utils.h"
+
+
+cpp use "./include/raylib.h"
+cpp use "./include/raymath.h"
+cpp use "./include/rlgl.h"
+
+cpp type char: byte
+cpp unsafe InitWindow(w: int,h:int,title: *cpp.char)
+fn InitWindow(w: int,h:int,title: str){
+    unsafe {
+        cpp.InitWindow(w,h,(*cpp.char)(&title[0]))
+    }
+}
