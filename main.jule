@@ -4,6 +4,11 @@
 
 fn main() {
     InitWindow(600,400,"Julenour")
+    let icon = LoadImage("santa-claus.png")
+      let icons =[]Image([icon])
+        SetWindowIcons(icons,1)
+    SetWindowTitle("The magic")
+    SetWindowPosition(0,0)
     for !WindowShouldClose() {
         BeginDrawing()
         ClearBackground(Color.RayWhite())

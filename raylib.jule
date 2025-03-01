@@ -1,38 +1,10 @@
 cpp use "main.hpp"
 
-cpp type char: byte
-
-#typedef
-cpp struct Color {
-    r: u8
-    b: u8
-    g: u8
-    a: u8
-}
-
-struct Color {
-   v: cpp.Color
-}
-impl Color{
-    static fn new(r:u8,b:u8,g:u8,a:u8): Color{
-        ret Color{v: cpp.Color{
-            r: r,
-            b:b,
-            g:g,a:a
-        }}
-    }
-    static fn Black(): Color{
-        ret Color.new( 0, 0, 0, 255 ) 
-    }
-    static fn RayWhite(): Color{
-        ret Color.new(245, 245, 245, 255 )
-    }
-}
 unsafe fn strToCharPtr(s:str): *cpp.char{
     ret (*cpp.char)(&s[0])
 }
 
-unsafe fn pchar_to_str(c: *cpp.char): str {
+unsafe fn ptrCharToStr(c: *cpp.char): str {
     if c == nil {
         ret ""
     }
@@ -44,11 +16,317 @@ unsafe fn pchar_to_str(c: *cpp.char): str {
     ret s
 }
 
-// Window function
+// Window-related functions
 cpp unsafe fn InitWindow(w:int,h:int,title: *cpp.char)
 
 fn InitWindow(w: int,h:int,title:str) {
     unsafe { cpp.InitWindow(w,h,(*cpp.char)(&title[0])) }
+}
+
+
+cpp unsafe fn CloseWindow()
+fn CloseWindow(){
+    unsafe {cpp.CloseWindow()}
+}
+
+cpp unsafe fn WindowShouldClose(): bool
+fn WindowShouldClose(): bool{
+    ret unsafe {cpp.WindowShouldClose()}
+}
+
+cpp unsafe fn IsWindowReady(): bool
+fn IsWindowReady(): bool{
+    ret unsafe {cpp.IsWindowReady()}
+}
+
+// RLAPI bool IsWindowFullscreen(void);                              // Check if window is currently fullscreen
+cpp unsafe fn IsWindowFullscreen(): bool
+fn IsWindowFullscreen(): bool{
+    ret unsafe {cpp.IsWindowFullscreen()}
+}
+
+// RLAPI bool IsWindowHidden(void);                                  // Check if window is currently hidden
+cpp unsafe fn IsWindowHidden(): bool
+fn IsWindowHidden(): bool{
+    ret unsafe {cpp.IsWindowHidden()}
+}
+
+// RLAPI bool IsWindowMinimized(void): bool;                               // Check if window is currently minimized
+cpp unsafe fn IsWindowMinimized(): bool
+fn IsWindowMinimized(): bool{
+    ret unsafe {cpp.IsWindowMinimized()}
+}
+
+// RLAPI bool IsWindowMaximized(void);                               // Check if window is currently maximized
+cpp unsafe fn IsWindowMaximized(): bool
+fn IsWindowMaximized(): bool{
+    ret unsafe {cpp.IsWindowMaximized()}
+}
+
+// RLAPI bool IsWindowFocused(void);                                 // Check if window is currently focused
+cpp unsafe fn IsWindowFocused(): bool
+fn IsWindowFocused(): bool{
+    ret unsafe {cpp.IsWindowFocused()}
+}
+
+// RLAPI bool IsWindowResized(void);                                 // Check if window has been resized last frame
+cpp unsafe fn IsWindowResized(): bool
+fn IsWindowResized(): bool{
+    ret unsafe {cpp.IsWindowResized()}
+}
+
+// RLAPI bool IsWindowState(unsigned int flag);                      // Check if one specific window flag is enabled
+cpp unsafe fn IsWindowState(flag: uint): bool
+fn IsWindowState(flag: uint): bool{
+    ret unsafe {cpp.IsWindowState(flag)}
+}
+
+// RLAPI void SetWindowState(unsigned int flags);                    // Set window configuration state using flags
+cpp unsafe fn SetWindowState(flags: uint)
+fn SetWindowState(flags: uint){
+     unsafe {cpp.SetWindowState(flags)}
+}
+
+// RLAPI void ClearWindowState(unsigned int flags);                  // Clear window configuration state flags
+cpp unsafe fn ClearWindowState(flags: uint)
+fn ClearWindowState(flags: uint){
+    unsafe {cpp.ClearWindowState(flags)}
+}
+
+// RLAPI void ToggleFullscreen(void);                                // Toggle window state: fullscreen/windowed, resizes monitor to match window resolution
+cpp unsafe fn ToggleFullscreen()
+fn ToggleFullscreen(){
+    unsafe {cpp.ToggleFullscreen()}
+}
+
+// RLAPI void ToggleBorderlessWindowed(void);                        // Toggle window state: borderless windowed, resizes window to match monitor resolution
+cpp unsafe fn ToggleBorderlessWindowed()
+fn ToggleBorderlessWindowed(){
+    unsafe {cpp.ToggleBorderlessWindowed()}
+}
+
+// RLAPI void MaximizeWindow(void);                                  // Set window state: maximized, if resizable
+cpp unsafe fn MaximizeWindow()
+fn MaximizeWindow(){
+    unsafe {cpp.MaximizeWindow()}
+}
+
+// RLAPI void MinimizeWindow(void);                                  // Set window state: minimized, if resizable
+cpp unsafe fn MinimizeWindow()
+fn MinimizeWindow(){
+    unsafe {cpp.MinimizeWindow()}
+}
+
+// RLAPI void RestoreWindow(void);                                   // Set window state: not minimized/maximized
+cpp unsafe fn RestoreWindow()
+fn RestoreWindow(){
+    unsafe {cpp.RestoreWindow()}
+}
+
+// RLAPI void SetWindowIcon(Image image);                            // Set icon for window (single image, RGBA 32bit)
+cpp unsafe fn SetWindowIcon(image: cpp.Image)
+fn SetWindowIcon(image:Image){
+    unsafe {cpp.SetWindowIcon(image)}
+}
+
+// RLAPI void SetWindowIcons(Image *images, int count);              // Set icon for window (multiple images, RGBA 32bit)
+cpp unsafe fn SetWindowIcons(images: *cpp.Image,count: int)
+fn SetWindowIcons(images:[]Image,count:int){
+    unsafe {cpp.SetWindowIcons(&images[0],count)}
+}
+
+// RLAPI void SetWindowTitle(const char *title);                     // Set title for window
+cpp unsafe fn SetWindowTitle(images: *cpp.char)
+fn SetWindowTitle(title: str){
+    unsafe {cpp.SetWindowTitle(strToCharPtr(title))}
+}
+
+//RLAPI void SetWindowPosition(int x, int y);                       // Set window position on screen
+cpp unsafe fn SetWindowPosition(x:int, y: int)
+fn SetWindowPosition(x:int, y: int){
+    unsafe {cpp.SetWindowPosition(x, y)}
+}
+
+
+// RLAPI void SetWindowMonitor(int monitor);                         // Set monitor for the current window
+cpp unsafe fn SetWindowMonitor(monitor:int)
+fn SetWindowMonitor(monitor:int){
+    unsafe {cpp.SetWindowMonitor(monitor)}
+}
+
+// RLAPI void SetWindowMinSize(int width, int height);               // Set window minimum dimensions (for FLAG_WINDOW_RESIZABLE)
+cpp unsafe fn SetWindowMinSize(w:int,h:int)
+fn SetWindowMinSize(w:int,h:int){
+    unsafe {cpp.SetWindowMinSize(w,h)}
+}
+
+// RLAPI void SetWindowMaxSize(int width, int height);               // Set window maximum dimensions (for FLAG_WINDOW_RESIZABLE)
+cpp unsafe fn SetWindowMaxSize(w:int,h:int)
+fn SetWindowMaxSize(w:int,h:int){
+    unsafe {cpp.SetWindowMaxSize(w,h)}
+}
+
+// RLAPI void SetWindowSize(int width, int height);                  // Set window dimensions
+cpp unsafe fn SetWindowSize(w:int,h:int)
+fn SetWindowSize(w:int,h:int){
+    unsafe {cpp.SetWindowSize(w,h)}
+}
+
+// RLAPI void SetWindowOpacity(float opacity);                       // Set window opacity [0.0f..1.0f]
+cpp unsafe fn SetWindowOpacity(opacity:f64)
+fn SetWindowOpacity(opacity:f64){
+    unsafe {cpp.SetWindowOpacity(opacity)}
+}
+
+// RLAPI void SetWindowFocused(void);                                // Set window focused
+cpp unsafe fn SetWindowFocused()
+fn SetWindowFocused(){
+    unsafe {cpp.SetWindowFocused()}
+}
+
+// RLAPI void *GetWindowHandle(void);                                // Get native window handle
+// TODO: check this function
+//cpp unsafe fn GetWindowHandle(): *any
+//fn GetWindowHandle():*any{
+//     ret unsafe {(*any)(cpp.GetWindowHandle())}
+//}
+
+// RLAPI int GetScreenWidth(void);                                   // Get current screen width
+cpp unsafe fn GetScreenWidth():int
+fn GetScreenWidth():int{
+    ret unsafe {cpp.GetScreenWidth()}
+}
+
+// RLAPI int GetScreenHeight(void);                                  // Get current screen height
+cpp unsafe fn GetScreenHeight():int
+fn GetScreenHeight():int{
+    ret unsafe {cpp.GetScreenHeight()}
+}
+
+// RLAPI int GetRenderWidth(void);                                   // Get current render width (it considers HiDPI)
+cpp unsafe fn GetRenderWidth():int
+fn GetRenderWidth():int{
+    ret unsafe {cpp.GetRenderWidth()}
+}
+
+// RLAPI int GetRenderHeight(void);                                  // Get current render height (it considers HiDPI)
+cpp unsafe fn GetRenderHeight():int
+fn GetRenderHeight():int{
+    ret unsafe {cpp.GetRenderHeight()}
+}
+
+// RLAPI int GetMonitorCount(void);                                  // Get number of connected monitors
+cpp unsafe fn GetMonitorCount():int
+fn GetMonitorCount():int{
+    ret unsafe {cpp.GetMonitorCount()}
+}
+
+// RLAPI int GetCurrentMonitor(void);                                // Get current monitor where window is placed
+cpp unsafe fn GetCurrentMonitor():int
+fn GetCurrentMonitor():int{
+    ret unsafe {cpp.GetCurrentMonitor()}
+}
+
+// RLAPI Vector2 GetMonitorPosition(int monitor);                    // Get specified monitor position
+cpp unsafe fn GetMonitorPosition(monitor:int):Vector2
+fn GetMonitorPosition(monitor:int):Vector2{
+    ret unsafe {cpp.GetMonitorPosition(monitor)}
+}
+
+// RLAPI int GetMonitorWidth(int monitor);                           // Get specified monitor width (current video mode used by monitor)
+cpp unsafe fn GetMonitorWidth(monitor:int):int
+fn GetMonitorWidth(monitor:int):int{
+    ret unsafe {cpp.GetMonitorWidth(monitor)}
+}
+
+// RLAPI int GetMonitorHeight(int monitor);                          // Get specified monitor height (current video mode used by monitor)
+cpp unsafe fn GetMonitorHeight(monitor:int):int
+fn GetMonitorHeight(monitor:int):int{
+  ret  unsafe {cpp.GetMonitorHeight(monitor)}
+}
+
+// RLAPI int GetMonitorPhysicalWidth(int monitor);                   // Get specified monitor physical width in millimetres
+cpp unsafe fn GetMonitorPhysicalWidth(monitor:int): int
+fn GetMonitorPhysicalWidth(monitor:int): int{
+  ret  unsafe {cpp.GetMonitorPhysicalWidth(monitor)}
+}
+
+// RLAPI int GetMonitorPhysicalHeight(int monitor);                  // Get specified monitor physical height in millimetres
+cpp unsafe fn GetMonitorPhysicalHeight(monitor:int): int
+fn GetMonitorPhysicalHeight(monitor:int):int{
+   ret unsafe {cpp.GetMonitorPhysicalHeight(monitor)}
+}
+
+// RLAPI int GetMonitorRefreshRate(int monitor);                     // Get specified monitor refresh rate
+cpp unsafe fn GetMonitorRefreshRate(monitor:int): int
+fn GetMonitorRefreshRate(monitor:int):int{
+   ret unsafe {cpp.GetMonitorRefreshRate(monitor)}
+}
+
+// RLAPI Vector2 GetWindowPosition(void);                            // Get window position XY on monitor
+cpp unsafe fn GetWindowPosition(): Vector2
+fn GetWindowPosition(): Vector2{
+   ret unsafe {cpp.GetWindowPosition()}
+}
+
+// RLAPI Vector2 GetWindowScaleDPI(void);                            // Get window scale DPI factor
+cpp unsafe fn GetWindowScaleDPI(): Vector2
+fn GetWindowScaleDPI(): Vector2{
+   ret unsafe {cpp.GetWindowScaleDPI()}
+}
+
+// RLAPI const char *GetMonitorName(int monitor);                    // Get the human-readable, UTF-8 encoded name of the specified monitor
+cpp unsafe fn GetMonitorName(monitor:int): str
+fn GetMonitorName(monitor:int):str{
+   //let raw = unsafe {cpp.GetMonitorName(monitor)}
+   //ret unsafe {ptrCharToStr(raw)}
+   ret unsafe {cpp.GetMonitorName(monitor)}      
+}
+
+// RLAPI void SetClipboardText(const char *text);                    // Set clipboard text content
+cpp unsafe fn SetClipboardText(text: *cpp.char)
+fn SetClipboardText(text: str){
+    unsafe {cpp.SetClipboardText(strToCharPtr(text))}
+}
+
+// RLAPI const char *GetClipboardText(void);                         // Get clipboard text content
+cpp unsafe fn GetClipboardText(): str
+fn GetClipboardText():str{
+   ret unsafe {cpp.GetClipboardText()}
+}
+
+// RLAPI Image GetClipboardImage(void);                              // Get clipboard image content
+cpp unsafe fn GetClipboardImage(): Image
+fn GetClipboardImage(): Image{
+   ret unsafe {cpp.GetClipboardImage()}
+}
+
+// RLAPI void EnableEventWaiting(void);                              // Enable waiting for events on EndDrawing(), no automatic event polling
+cpp unsafe fn EnableEventWaiting()
+fn EnableEventWaiting(){
+    unsafe {cpp.EnableEventWaiting()}
+}
+
+// RLAPI void DisableEventWaiting(void);                             // Disable waiting for events on EndDrawing(), automatic events polling
+cpp unsafe fn DisableEventWaiting()
+fn DisableEventWaiting(){
+    unsafe {cpp.DisableEventWaiting()}
+}
+
+//********************************************************
+// Draw function 
+
+cpp unsafe fn DrawText(text: *cpp.char,  posX:int,  posY:int,  fontSize:int,  color:cpp.Color)
+fn DrawText(text: str,posX:int,  posY:int,  fontSize:int,  color:Color){
+    unsafe{ cpp.DrawText(strToCharPtr(text),posX,posY,fontSize, color.v)}
+}
+
+
+
+// Drawing-related functions
+cpp unsafe fn ClearBackground(color: cpp.Color)
+fn ClearBackground(color: Color){
+    unsafe {cpp.ClearBackground(color.v)}
 }
 
 cpp unsafe fn BeginDrawing()
@@ -61,25 +339,82 @@ fn EndDrawing(){
     unsafe {cpp.EndDrawing()}
 }
 
-cpp unsafe fn CloseWindow()
-fn CloseWindow(){
-    unsafe {cpp.CloseWindow()}
+// RLAPI void BeginMode2D(Camera2D camera);                          // Begin 2D mode with custom camera (2D)
+// RLAPI void EndMode2D(void);                                       // Ends 2D mode with custom camera
+cpp unsafe fn EndMode2D()
+fn EndMode2D(){
+    unsafe {cpp.EndMode2D()}
+}
+// RLAPI void BeginMode3D(Camera3D camera);                          // Begin 3D mode with custom camera (3D)
+// RLAPI void EndMode3D(void);                                       // Ends 3D mode and returns to default 2D orthographic mode
+cpp unsafe fn EndMode3D()
+fn EndMode3D(){
+    unsafe {cpp.EndMode3D()}
+}
+// RLAPI void BeginTextureMode(RenderTexture2D target);              // Begin drawing to render texture
+// RLAPI void EndTextureMode(void);                                  // Ends drawing to render texture
+//cpp unsafe fn EndTextureMode()
+//fn EndTextureMode(){
+//    unsafe {cpp.EndTextureMode()}
+//}
+
+// RLAPI void BeginShaderMode(Shader shader);                        // Begin custom shader drawing
+//cpp unsafe fn BeginShaderMode()
+//fn BeginShaderMode(){
+//    unsafe {cpp.BeginShaderMode()}
+//}
+
+// RLAPI void EndShaderMode(void);                                   // End custom shader drawing (use default shader)
+cpp unsafe fn EndShaderMode()
+fn EndShaderMode(){
+    unsafe {cpp.EndShaderMode()}
 }
 
-cpp unsafe fn WindowShouldClose(): bool
-fn WindowShouldClose(): bool{
-    ret unsafe {cpp.WindowShouldClose()}
+// RLAPI void BeginBlendMode(int mode);                              // Begin blending mode (alpha, additive, multiplied, subtract, custom)
+cpp unsafe fn BeginBlendMode(mode:int)
+fn BeginBlendMode(mode:int){
+    unsafe {cpp.BeginBlendMode(mode)}
+}
+
+// RLAPI void EndBlendMode(void);                                    // End blending mode (reset to default: alpha blending)
+cpp unsafe fn EndBlendMode()
+fn EndBlendMode(){
+    unsafe {cpp.EndBlendMode()}
+}
+// RLAPI void BeginScissorMode(int x, int y, int width, int height); // Begin scissor mode (define screen area for following drawing)
+cpp unsafe fn BeginScissorMode(x:int,y:int,w:int,h:int)
+fn BeginScissorMode(x:int,y:int,w:int,h:int){
+    unsafe {cpp.BeginScissorMode(x,y,w,h)}
+}
+// RLAPI void EndScissorMode(void);                                  // End scissor mode
+cpp unsafe fn EndScissorMode()
+fn EndScissorMode(){
+    unsafe {cpp.EndScissorMode()}
+}
+// RLAPI void BeginVrStereoMode(VrStereoConfig config);              // Begin stereo rendering (requires VR simulator)
+
+// RLAPI void EndVrStereoMode(void);                                 // End stereo rendering (requires VR simulator)
+cpp unsafe fn EndVrStereoMode()
+fn EndVrStereoMode(){
+    unsafe {cpp.EndVrStereoMode()}
 }
 
 
-// Draw function
-
-cpp unsafe fn DrawText(text: *cpp.char,  posX:int,  posY:int,  fontSize:int,  color:cpp.Color)
-fn DrawText(text: str,posX:int,  posY:int,  fontSize:int,  color:Color){
-    unsafe{ cpp.DrawText(strToCharPtr(text),posX,posY,fontSize, color.v)}
+// Image loading functions
+// NOTE: These functions do not require GPU access
+//RLAPI Image LoadImage(const char *fileName);                                                             // Load image from file into CPU memory (RAM)
+cpp unsafe fn LoadImage(path: *cpp.char): Image
+fn LoadImage(path:str):Image{
+    ret unsafe { cpp.LoadImage(strToCharPtr(path))}
 }
-
-cpp unsafe fn ClearBackground(color: cpp.Color)
-fn ClearBackground(color: Color){
-    unsafe {cpp.ClearBackground(color.v)}
-}
+//RLAPI Image LoadImageRaw(const char *fileName, int width, int height, int format, int headerSize);       // Load image from RAW file data
+//RLAPI Image LoadImageAnim(const char *fileName, int *frames);                                            // Load image sequence from file (frames appended to image.data)
+//RLAPI Image LoadImageAnimFromMemory(const char *fileType, const unsigned char *fileData, int dataSize, int *frames); // Load image sequence from memory buffer
+//RLAPI Image LoadImageFromMemory(const char *fileType, const unsigned char *fileData, int dataSize);      // Load image from memory buffer, fileType refers to extension: i.e. '.png'
+//RLAPI Image LoadImageFromTexture(Texture2D texture);                                                     // Load image from GPU texture data
+//RLAPI Image LoadImageFromScreen(void);                                                                   // Load image from screen buffer and (screenshot)
+//RLAPI bool IsImageValid(Image image);                                                                    // Check if an image is valid (data and parameters)
+//RLAPI void UnloadImage(Image image);                                                                     // Unload image from CPU memory (RAM)
+//RLAPI bool ExportImage(Image image, const char *fileName);                                               // Export image data to file, returns true on success
+//RLAPI unsigned char *ExportImageToMemory(Image image, const char *fileType, int *fileSize);              // Export image to memory buffer
+//RLAPI bool ExportImageAsCode(Image image, const char *fileName);                                         // Export image as code file defining an array of bytes, returns true on success

@@ -1,0 +1,130 @@
+
+cpp type char: byte
+
+#typedef
+cpp struct Vector2{
+    x: f64
+    y: f64
+}
+
+// struct Vector2{
+//    v: cpp.Vector2
+// }
+// 
+// impl Vector2{
+// static fn new(x:f64,y:f64):Vector2{
+//     ret Vector2{v: cpp.Vector2{x:x,y:y}}}
+// }
+
+type Vector2 = cpp.Vector2
+
+#typedef
+cpp struct Vector3{
+    x: f64
+    y: f64
+    z: f64
+}
+
+struct Vector3{
+   v: cpp.Vector3
+}
+
+impl Vector3{
+static fn new(x:f64,y:f64,z:f64):Vector3{
+    ret Vector3{v: cpp.Vector3{x:x,y:y,z:z}}}
+}
+
+
+#typedef
+cpp struct Vector4{
+    x: f64
+    y: f64
+    z: f64
+    w: f64
+}
+
+struct Vector4{
+   v: cpp.Vector4
+}
+
+impl Vector4{
+static fn new(x:f64,y:f64,z:f64,w:f64):Vector4{
+    ret Vector4{v: cpp.Vector4{x:x,y:y,z:z,w:w}}}
+}
+
+#typedef
+cpp struct Color {
+    r: u8
+    b: u8
+    g: u8
+    a: u8
+}
+
+struct Color {
+   v: cpp.Color
+}
+
+impl Color{
+    static fn new(r:u8,b:u8,g:u8,a:u8): Color{
+        ret Color{v: cpp.Color{
+            r: r,
+            b:b,
+            g:g,a:a
+        }}
+    }
+    static fn Black(): Color{
+        ret Color.new( 0, 0, 0, 255 ) 
+    }
+    static fn RayWhite(): Color{
+        ret Color.new(245, 245, 245, 255 )
+    }
+}
+
+#typedef
+cpp struct Rectangle {
+    x: u8
+    y: u8
+    width: u8
+    height: u8
+}
+
+struct Rectangle {
+   v: cpp.Rectangle
+}
+
+
+#typedef
+cpp struct Image {
+    data: any
+    width: int
+    height: int
+    mipmaps: int
+    format: int
+}
+
+type Image = cpp.Image
+
+#typedef
+cpp struct Texture {
+    id: uint
+    width: int
+    height: int
+    mipmaps: int
+    format: int
+}
+
+struct Texture {
+   v: cpp.Texture
+}
+
+type Texture2D = Texture
+type TextureCubemap = Texture
+
+#typedef
+cpp struct RenderTexture {
+    id: uint                 // OpenGL framebuffer object id
+    texture: Texture         // Color buffer attachment texture
+    depth: Texture           // Depth buffer attachment texture
+}
+
+type RenderTexture = cpp.RenderTexture
