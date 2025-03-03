@@ -6,7 +6,6 @@ fn main() {
 	let icons = []Image([icon])
 	SetWindowIcons(icons, 1)
 	SetWindowTitle("The magic")
-	SetWindowPosition(0, 0)
 	for !WindowShouldClose() {
 		BeginDrawing()
 		ClearBackground(Color{245, 245, 245, 255})
