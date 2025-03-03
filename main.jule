@@ -1,23 +1,20 @@
 #pass "-I./include -L./lib -lraylib -lGL -lX11 -lpthread -lm -ldl -Wl,-rpath,./lib"
 
-
-
 fn main() {
-    InitWindow(600,400,"Julenour")
-    let icon = LoadImage("santa-claus.png")
-      let icons =[]Image([icon])
-        SetWindowIcons(icons,1)
-    SetWindowTitle("The magic")
-    SetWindowPosition(0,0)
-    for !WindowShouldClose() {
-        BeginDrawing()
-        ClearBackground(Color{245, 245, 245, 255})
-        DrawText("Hello, raylib!", 10, 10, 20, Color{ 0, 0, 0, 255 })
-        EndDrawing()
-    }
-    CloseWindow()
+	InitWindow(600, 400, "Julenour")
+	let icon = LoadImage("santa-claus.png")
+	let icons = []Image([icon])
+	SetWindowIcons(icons, 1)
+	SetWindowTitle("The magic")
+	SetWindowPosition(0, 0)
+	for !WindowShouldClose() {
+		BeginDrawing()
+		ClearBackground(Color{245, 245, 245, 255})
+		DrawText("Hello, raylib!", 10, 10, 20, Color{0, 0, 0, 255})
+		EndDrawing()
+	}
+	CloseWindow()
 }
-
 
 //#include "raylib.h"
 //

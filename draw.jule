@@ -2,111 +2,134 @@
 // Drawing-related functions
 
 cpp unsafe fn ClearBackground(color: cpp.Color)
-fn ClearBackground(color: Color){
-    unsafe {cpp.ClearBackground(color)}
+fn ClearBackground(color: Color) {
+	unsafe { cpp.ClearBackground(color) }
 }
 
 cpp unsafe fn BeginDrawing()
-fn BeginDrawing(){
-    unsafe {cpp.BeginDrawing()}
+fn BeginDrawing() {
+	unsafe { cpp.BeginDrawing() }
 }
 
 cpp unsafe fn EndDrawing()
-fn EndDrawing(){
-    unsafe {cpp.EndDrawing()}
+fn EndDrawing() {
+	unsafe { cpp.EndDrawing() }
 }
 
 // RLAPI void BeginMode2D(Camera2D camera);                          // Begin 2D mode with custom camera (2D)
 // RLAPI void EndMode2D(void);                                       // Ends 2D mode with custom camera
 cpp unsafe fn EndMode2D()
-fn EndMode2D(){
-    unsafe {cpp.EndMode2D()}
+fn EndMode2D() {
+	unsafe { cpp.EndMode2D() }
 }
 
 // RLAPI void BeginMode3D(Camera3D camera);                          // Begin 3D mode with custom camera (3D)
 // RLAPI void EndMode3D(void);                                       // Ends 3D mode and returns to default 2D orthographic mode
 cpp unsafe fn EndMode3D()
-fn EndMode3D(){
-    unsafe {cpp.EndMode3D()}
+fn EndMode3D() {
+	unsafe { cpp.EndMode3D() }
 }
 
 // RLAPI void BeginTextureMode(RenderTexture2D target);              // Begin drawing to render texture
 cpp unsafe fn BeginTextureMode(target: RenderTexture2D)
-fn BeginTextureMode(target: RenderTexture2D){
-    unsafe  {
-        cpp.BeginTextureMode(target)
-    }
+fn BeginTextureMode(target: RenderTexture2D) {
+	unsafe {
+		cpp.BeginTextureMode(target)
+	}
 }
 
 // RLAPI void EndTextureMode(void);                                  // Ends drawing to render texture
 cpp unsafe fn EndTextureMode()
-fn EndTextureMode(){
-    unsafe {cpp.EndTextureMode()}
+fn EndTextureMode() {
+	unsafe { cpp.EndTextureMode() }
 }
 
 // RLAPI void BeginShaderMode(Shader shader);                        // Begin custom shader drawing
 cpp unsafe fn BeginShaderMode(shader: Shader)
-fn BeginShaderMode(shader: Shader){
-    unsafe {cpp.BeginShaderMode(shader)}
+fn BeginShaderMode(shader: Shader) {
+	unsafe { cpp.BeginShaderMode(shader) }
 }
 
 // RLAPI void EndShaderMode(void);                                   // End custom shader drawing (use default shader)
 cpp unsafe fn EndShaderMode()
-fn EndShaderMode(){
-    unsafe {cpp.EndShaderMode()}
+fn EndShaderMode() {
+	unsafe { cpp.EndShaderMode() }
 }
 
 // RLAPI void BeginBlendMode(int mode);                              // Begin blending mode (alpha, additive, multiplied, subtract, custom)
-cpp unsafe fn BeginBlendMode(mode:int)
-fn BeginBlendMode(mode:int){
-    unsafe {cpp.BeginBlendMode(mode)}
+cpp unsafe fn BeginBlendMode(mode: int)
+fn BeginBlendMode(mode: int) {
+	unsafe { cpp.BeginBlendMode(mode) }
 }
 
 // RLAPI void EndBlendMode(void);                                    // End blending mode (reset to default: alpha blending)
 cpp unsafe fn EndBlendMode()
-fn EndBlendMode(){
-    unsafe {cpp.EndBlendMode()}
+fn EndBlendMode() {
+	unsafe { cpp.EndBlendMode() }
 }
 
 // RLAPI void BeginScissorMode(int x, int y, int width, int height); // Begin scissor mode (define screen area for following drawing)
-cpp unsafe fn BeginScissorMode(x:int,y:int,w:int,h:int)
-fn BeginScissorMode(x:int,y:int,w:int,h:int){
-    unsafe {cpp.BeginScissorMode(x,y,w,h)}
+cpp unsafe fn BeginScissorMode(x: int, y: int, w: int, h: int)
+fn BeginScissorMode(x: int, y: int, w: int, h: int) {
+	unsafe { cpp.BeginScissorMode(x, y, w, h) }
 }
 
 // RLAPI void EndScissorMode(void);                                  // End scissor mode
 cpp unsafe fn EndScissorMode()
-fn EndScissorMode(){
-    unsafe {cpp.EndScissorMode()}
+fn EndScissorMode() {
+	unsafe { cpp.EndScissorMode() }
 }
 
 // RLAPI void BeginVrStereoMode(VrStereoConfig config);              // Begin stereo rendering (requires VR simulator)
 cpp unsafe fn BeginVrStereoMode(config: VrStereoConfig)
-fn BeginVrStereoMode(config: VrStereoConfig){
-    unsafe {cpp.BeginVrStereoMode(config)}
+fn BeginVrStereoMode(config: VrStereoConfig) {
+	unsafe { cpp.BeginVrStereoMode(config) }
 }
 
 // RLAPI void EndVrStereoMode(void);                                 // End stereo rendering (requires VR simulator)
 cpp unsafe fn EndVrStereoMode()
-fn EndVrStereoMode(){
-    unsafe {cpp.EndVrStereoMode()}
+fn EndVrStereoMode() {
+	unsafe { cpp.EndVrStereoMode() }
 }
-
-
 
 // *************************************************************************************************
 // Basic shapes drawing functions
 // RLAPI void DrawPixel(int posX, int posY, Color color);                                                   // Draw a pixel using geometry [Can be slow, use with care]
 cpp unsafe fn DrawPixel(posX: int, posY: int, color: Color)
-fn DrawPixel(posX: int, posY: int, color: Color){
-    unsafe {cpp.DrawPixel(posX , posY, color)} 
+fn DrawPixel(posX: int, posY: int, color: Color) {
+	unsafe { cpp.DrawPixel(posX, posY, color) }
 }
 
 // RLAPI void DrawPixelV(Vector2 position, Color color);                                                    // Draw a pixel using geometry (Vector version) [Can be slow, use with care]
+cpp unsafe fn DrawPixelV(position: Vector2, color: Color)
+fn DrawPixelV(position: Vector2, color: Color) {
+	unsafe { cpp.DrawPixelV(position, color) }
+}
+
 // RLAPI void DrawLine(int startPosX, int startPosY, int endPosX, int endPosY, Color color);                // Draw a line
+cpp unsafe fn DrawLine(startX: int, startY: int, endPosX: int, endPosY: int, color: Color)
+fn DrawLine(startX: int, startY: int, endX: int, endY: int, color: Color) {
+	unsafe { cpp.DrawLine(startX, startY, endX, endY, color) }
+}
+
 // RLAPI void DrawLineV(Vector2 startPos, Vector2 endPos, Color color);                                     // Draw a line (using gl lines)
+cpp unsafe fn DrawLineV(start: Vector2, end: Vector2, color: Color)
+fn DrawLineV(start: Vector2, end: Vector2, color: Color) {
+	unsafe { cpp.DrawLineV(start, end, color) }
+}
+
 // RLAPI void DrawLineEx(Vector2 startPos, Vector2 endPos, float thick, Color color);                       // Draw a line (using triangles/quads)
+cpp unsafe fn DrawLineEx(start: Vector2, end: Vector2, thick: f64, color: Color)
+fn DrawLineEx(start: Vector2, end: Vector2, thick: f64, color: Color) {
+	unsafe { cpp.DrawLineEx(start, end, thick, color) }
+}
+
 // RLAPI void DrawLineStrip(const Vector2 *points, int pointCount, Color color);                            // Draw lines sequence (using gl lines)
+cpp unsafe fn DrawLineStrip(points: []Vector2, pointCount: int, color: Color)
+fn DrawLineStrip(points: []Vector2, pointCount: int, color: Color) {
+	unsafe { cpp.DrawLineStrip(points, pointCount, color) }
+}
+
 // RLAPI void DrawLineBezier(Vector2 startPos, Vector2 endPos, float thick, Color color);                   // Draw line segment cubic-bezier in-out interpolation
 // RLAPI void DrawCircle(int centerX, int centerY, float radius, Color color);                              // Draw a color-filled circle
 // RLAPI void DrawCircleSector(Vector2 center, float radius, float startAngle, float endAngle, int segments, Color color);      // Draw a piece of a circle
@@ -138,3 +161,5 @@ fn DrawPixel(posX: int, posY: int, color: Color){
 // RLAPI void DrawPoly(Vector2 center, int sides, float radius, float rotation, Color color);               // Draw a regular polygon (Vector version)
 // RLAPI void DrawPolyLines(Vector2 center, int sides, float radius, float rotation, Color color);          // Draw a polygon outline of n sides
 // RLAPI void DrawPolyLinesEx(Vector2 center, int sides, float radius, float rotation, float lineThick, Color color); // Draw a polygon outline of n sides with extended parameters
+
+//**********************************************************************************************

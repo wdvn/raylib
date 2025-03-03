@@ -4,35 +4,35 @@
 //RLAPI void ShowCursor(void);                                      // Shows cursor
 cpp unsafe fn ShowCursor()
 fn ShowCursor() {
-    unsafe { cpp.ShowCursor() }
+	unsafe { cpp.ShowCursor() }
 }
 
 //RLAPI void HideCursor(void);                                      // Hides cursor
 cpp unsafe fn HideCursor()
 fn HideCursor() {
-    unsafe { cpp.HideCursor() }
+	unsafe { cpp.HideCursor() }
 }
 
 //RLAPI bool IsCursorHidden(void);                                  // Check if cursor is not visible
 cpp unsafe fn IsCursorHidden(): bool
 fn IsCursorHidden(): bool {
-   ret unsafe { cpp.IsCursorHidden() }
+	ret unsafe { cpp.IsCursorHidden() }
 }
 
 //RLAPI void EnableCursor(void);                                    // Enables cursor (unlock cursor)
 cpp unsafe fn EnableCursor()
 fn EnableCursor() {
-    unsafe { cpp.EnableCursor() }
+	unsafe { cpp.EnableCursor() }
 }
 
 //RLAPI void DisableCursor(void);                                   // Disables cursor (lock cursor)
 cpp unsafe fn DisableCursor()
 fn DisableCursor() {
-    unsafe { cpp.DisableCursor() }
+	unsafe { cpp.DisableCursor() }
 }
 
 //RLAPI bool IsCursorOnScreen(void);                                // Check if cursor is on the screen
 cpp unsafe fn IsCursorOnScreen(): bool
 fn IsCursorOnScreen(): bool {
-   ret unsafe { cpp.IsCursorOnScreen() }
+	ret unsafe { cpp.IsCursorOnScreen() }
 }

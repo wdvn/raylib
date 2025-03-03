@@ -1,39 +1,35 @@
 cpp use "main.hpp"
 
-unsafe fn strToCharPtr(s:str): *cpp.char{
-    ret (*cpp.char)(&s[0])
+unsafe fn strToCharPtr(s: str): *cpp.char {
+	ret (*cpp.char)(&s[0])
 }
 
 unsafe fn ptrCharToStr(c: *cpp.char): str {
-    if c == nil {
-        ret ""
-    }
-    let mut s = ""
-    let mut i = 0
-    for int(c[i]) != 0; i++ {
-        s += str(c[i])
-    }
-    ret s
+	if c == nil {
+		ret ""
+	}
+	let mut s = ""
+	let mut i = 0
+	for int(c[i]) != 0; i++ {
+		s += str(c[i])
+	}
+	ret s
 }
-
 
 //********************************************************
-// Draw function 
+// Draw function
 
-cpp unsafe fn DrawText(text: *cpp.char,  posX:int,  posY:int,  fontSize:int,  color:cpp.Color)
-fn DrawText(text: str,posX:int,  posY:int,  fontSize:int,  color:Color){
-    unsafe{ cpp.DrawText(strToCharPtr(text),posX,posY,fontSize, color)}
+cpp unsafe fn DrawText(text: *cpp.char, posX: int, posY: int, fontSize: int, color: cpp.Color)
+fn DrawText(text: str, posX: int, posY: int, fontSize: int, color: Color) {
+	unsafe { cpp.DrawText(strToCharPtr(text), posX, posY, fontSize, color) }
 }
-
-
-
 
 // Image loading functions
 // NOTE: These functions do not require GPU access
 //RLAPI Image LoadImage(const char *fileName);                                                             // Load image from file into CPU memory (RAM)
 cpp unsafe fn LoadImage(path: *cpp.char): Image
-fn LoadImage(path:str):Image{
-    ret unsafe { cpp.LoadImage(strToCharPtr(path))}
+fn LoadImage(path: str): Image {
+	ret unsafe { cpp.LoadImage(strToCharPtr(path)) }
 }
 //RLAPI Image LoadImageRaw(const char *fileName, int width, int height, int format, int headerSize);       // Load image from RAW file data
 //RLAPI Image LoadImageAnim(const char *fileName, int *frames);                                            // Load image sequence from file (frames appended to image.data)
