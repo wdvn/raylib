@@ -22,7 +22,7 @@ unsafe fn ptrCharToStr(c: *cpp.char): str {
 
 cpp unsafe fn DrawText(text: *cpp.char,  posX:int,  posY:int,  fontSize:int,  color:cpp.Color)
 fn DrawText(text: str,posX:int,  posY:int,  fontSize:int,  color:Color){
-    unsafe{ cpp.DrawText(strToCharPtr(text),posX,posY,fontSize, color.v)}
+    unsafe{ cpp.DrawText(strToCharPtr(text),posX,posY,fontSize, color)}
 }
 
 

@@ -11,8 +11,8 @@ fn main() {
     SetWindowPosition(0,0)
     for !WindowShouldClose() {
         BeginDrawing()
-        ClearBackground(Color.RayWhite())
-        DrawText("Hello, raylib!", 10, 10, 20, Color.Black())
+        ClearBackground(Color{245, 245, 245, 255})
+        DrawText("Hello, raylib!", 10, 10, 20, Color{ 0, 0, 0, 255 })
         EndDrawing()
     }
     CloseWindow()

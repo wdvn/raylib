@@ -60,25 +60,22 @@ cpp struct Color {
     a: u8
 }
 
-struct Color {
-   v: cpp.Color
-}
-
-impl Color{
-    static fn new(r:u8,b:u8,g:u8,a:u8): Color{
-        ret Color{v: cpp.Color{
-            r: r,
-            b:b,
-            g:g,a:a
-        }}
-    }
-    static fn Black(): Color{
-        ret Color.new( 0, 0, 0, 255 ) 
-    }
-    static fn RayWhite(): Color{
-        ret Color.new(245, 245, 245, 255 )
-    }
-}
+type Color = cpp.Color 
+//impl Color{
+//    static fn new(r:u8,b:u8,g:u8,a:u8): Color{
+//        ret Color{v: cpp.Color{
+//            r: r,
+//            b:b,
+//            g:g,a:a
+//        }}
+//    }
+//    static fn Black(): Color{
+//        ret Color.new( 0, 0, 0, 255 ) 
+//    }
+//    static fn RayWhite(): Color{
+//        ret Color.new(245, 245, 245, 255 )
+//    }
+//}
 
 #typedef
 cpp struct Rectangle {
