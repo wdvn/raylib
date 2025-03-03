@@ -91,21 +91,21 @@ type Rectangle = cpp.Rectangle
 #typedef
 cpp struct Image {
 	data:    any
-	width:   int
-	height:  int
-	mipmaps: int
-	format:  int
+	width:   i32
+	height:  i32
+	mipmaps: i32
+	format:  i32
 }
 
 type Image = cpp.Image
 
 #typedef
 cpp struct Texture {
-	id:      uint
-	width:   int
-	height:  int
-	mipmaps: int
-	format:  int
+	id:      u32
+	width:   i32
+	height:  i32
+	mipmaps: i32
+	format:  i32
 }
 
 struct Texture {
@@ -117,7 +117,7 @@ type TextureCubemap = Texture
 
 #typedef
 cpp struct RenderTexture {
-	id:      uint    // OpenGL framebuffer object id
+	id:      u32     // OpenGL framebuffer object id
 	texture: Texture // Color buffer attachment texture
 	depth:   Texture // Depth buffer attachment texture
 }
@@ -128,21 +128,21 @@ type RenderTexture2D = cpp.RenderTexture
 #typedef
 cpp struct NPatchInfo {
 	source: Rectangle
-	left:   int
-	top:    int
-	right:  int
-	bottom: int
-	layout: int
+	left:   i32
+	top:    i32
+	right:  i32
+	bottom: i32
+	layout: i32
 }
 
 type NPatchInfo = cpp.NPatchInfo
 
 #typedef
 cpp struct GlyphInfo {
-	value:    int   // Character value (Unicode)
-	offsetX:  int   // Character offset X when drawing
-	offsetY:  int   // Character offset Y when drawing
-	advanceX: int   // Character advance position X
+	value:    i32   // Character value (Unicode)
+	offsetX:  i32   // Character offset X when drawing
+	offsetY:  i32   // Character offset Y when drawing
+	advanceX: i32   // Character advance position X
 	image:    Image // Character image data
 }
 
@@ -150,9 +150,9 @@ type GlyphInfo = cpp.GlyphInfo
 
 #typedef
 cpp struct Font {
-	baseSize:     int         // Base size (default chars height)
-	glyphCount:   int         // Number of glyph characters
-	glyphPadding: int         // Padding around the glyph characters
+	baseSize:     i32         // Base size (default chars height)
+	glyphCount:   i32         // Number of glyph characters
+	glyphPadding: i32         // Padding around the glyph characters
 	texture:      Texture2D   // Texture atlas containing the glyphs
 	recs:         []Rectangle // Rectangles in texture for the glyphs
 	glyphs:       []GlyphInfo // Glyphs info data
@@ -166,7 +166,7 @@ cpp struct Camera3D {
 	target:     Vector3 // Camera target it looks-at
 	up:         Vector3 // Camera up vector (rotation over its axis)
 	fovy:       f64     // Camera field-of-view aperture in Y (degrees) in perspective, used as near plane width in orthographic
-	projection: int     // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
+	projection: i32     // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
 }
 
 type Camera3D = cpp.Camera3D
@@ -184,8 +184,8 @@ type Camera2D = cpp.Camera2D
 
 #typedef
 cpp struct Mesh {
-	vertexCount:   int // Number of vertices stored in arrays
-	triangleCount: int // Number of triangles stored (indexed or not)
+	vertexCount:   i32 // Number of vertices stored in arrays
+	triangleCount: i32 // Number of triangles stored (indexed or not)
 
 	// Vertex attributes data
 	vertices:   []f64 // Vertex position (XYZ - 3 components per vertex) (shader-location = 0)
@@ -202,7 +202,7 @@ cpp struct Mesh {
 	boneIds:      []u8     // Vertex bone ids, max 255 bone ids, up to 4 bones influence by vertex (skinning) (shader-location = 6)
 	boneWeights:  []float  // Vertex bone weight, up to 4 bones influence by vertex (skinning) (shader-location = 7)
 	boneMatrices: []Matrix // Bones animated transformation matrices
-	boneCount:    int      // Number of bones
+	boneCount:    i32      // Number of bones
 
 	// OpenGL identifiers
 	vaoId: u32   // OpenGL Vertex Array Object id
@@ -211,7 +211,7 @@ cpp struct Mesh {
 
 #typedef
 cpp struct Shader {
-	id:   uint
+	id:   u32
 	locs: []int
 }
 
@@ -256,3 +256,19 @@ cpp struct VrStereoConfig {
 }
 
 type VrStereoConfig = cpp.VrStereoConfig
+
+// VrDeviceInfo, Head-Mounted-Display device parameters
+#typedef
+cpp struct VrDeviceInfo {
+	hResolution:            i32    // Horizontal resolution in pixels
+	vResolution:            i32    // Vertical resolution in pixels
+	hScreenSize:            f64    // Horizontal size in meters
+	vScreenSize:            f64    // Vertical size in meters
+	eyeToScreenDistance:    f64    // Distance between eye and display in meters
+	lensSeparationDistance: f64    // Lens separation distance in meters
+	interpupillaryDistance: f64    // IPD (distance between pupils) in meters
+	lensDistortionValues:   [4]f64 // Lens distortion constant parameters
+	chromaAbCorrection:     [4]f64 // Chromatic aberration correction parameters
+}
+
+type VrDeviceInfo = cpp.VrDeviceInfo

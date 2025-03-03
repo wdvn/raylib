@@ -275,38 +275,38 @@ fn DrawTriangle(v1: Vector2, v2: Vector2, v3: Vector2, color: Color) {
 }
 
 // RLAPI void DrawTriangleLines(Vector2 v1, Vector2 v2, Vector2 v3, Color color);                           // Draw triangle outline (vertex in counter-clockwise order!)
-cpp unsafe fn DrawTriangleLines(v1: Vector2, v2: Vector2, v3: Vector2, color: Color);
-fn DrawTriangleLines(v1: Vector2, v2: Vector2, v3: Vector2, color: Color){
-    unsafe { cpp.DrawTriangleLines(v1, v2, v3, color)}
+cpp unsafe fn DrawTriangleLines(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)
+fn DrawTriangleLines(v1: Vector2, v2: Vector2, v3: Vector2, color: Color) {
+	unsafe { cpp.DrawTriangleLines(v1, v2, v3, color) }
 }
 
 // RLAPI void DrawTriangleFan(const Vector2 *points, int pointCount, Color color);                          // Draw a triangle fan defined by points (first vertex is the center)
-cpp unsafe fn DrawTriangleFan(points: *Vector2, pointCount: i32, color: Color);
-fn DrawTriangleFan(points: []Vector2, pointCount: i32, color: Color){
-    unsafe { cpp.DrawTriangleFan(&points[0], pointCount, color)}
+cpp unsafe fn DrawTriangleFan(points: *Vector2, pointCount: i32, color: Color)
+fn DrawTriangleFan(points: []Vector2, pointCount: i32, color: Color) {
+	unsafe { cpp.DrawTriangleFan(&points[0], pointCount, color) }
 }
 
 // RLAPI void DrawTriangleStrip(const Vector2 *points, int pointCount, Color color);                        // Draw a triangle strip defined by points
-cpp unsafe fn DrawTriangleStrip(points: *Vector2, pointCount: i32, color: Color);
-fn DrawTriangleStrip(points: []Vector2, pointCount: i32, color: Color){
-    unsafe { cpp.DrawTriangleStrip(&points[0], pointCount, color)}
+cpp unsafe fn DrawTriangleStrip(points: *Vector2, pointCount: i32, color: Color)
+fn DrawTriangleStrip(points: []Vector2, pointCount: i32, color: Color) {
+	unsafe { cpp.DrawTriangleStrip(&points[0], pointCount, color) }
 }
 
 // RLAPI void DrawPoly(Vector2 center, int sides, float radius, float rotation, Color color);               // Draw a regular polygon (Vector version)
-cpp unsafe fn DrawPoly(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color);
-fn DrawPoly(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color){
-    unsafe { cpp.DrawPoly(center, sides, radius, rotation, color)}
+cpp unsafe fn DrawPoly(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color)
+fn DrawPoly(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color) {
+	unsafe { cpp.DrawPoly(center, sides, radius, rotation, color) }
 }
 
 // RLAPI void DrawPolyLines(Vector2 center, int sides, float radius, float rotation, Color color);          // Draw a polygon outline of n sides
-cpp unsafe fn DrawPolyLines(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color);
-fn DrawPolyLines(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color){
-    unsafe { cpp.DrawPolyLines(center, sides, radius, rotation, color)}
+cpp unsafe fn DrawPolyLines(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color)
+fn DrawPolyLines(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color) {
+	unsafe { cpp.DrawPolyLines(center, sides, radius, rotation, color) }
 }
 
 // RLAPI void DrawPolyLinesEx(Vector2 center, int sides, float radius, float rotation, float lineThick, Color color); // Draw a polygon outline of n sides with extended parameters
-cpp unsafe fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f64, rotation: f64, lineThick: f64, color: Color);
-fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f64, rotation: f64, lineThick: f64, color: Color){
-    unsafe { cpp.DrawPolyLinesEx(center, sides, radius, rotation, lineThick, color)}
+cpp unsafe fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f64, rotation: f64, lineThick: f64, color: Color)
+fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f64, rotation: f64, lineThick: f64, color: Color) {
+	unsafe { cpp.DrawPolyLinesEx(center, sides, radius, rotation, lineThick, color) }
 }
 //**********************************************************************************************

@@ -292,3 +292,17 @@ cpp unsafe fn DisableEventWaiting()
 fn DisableEventWaiting() {
 	unsafe { cpp.DisableEventWaiting() }
 }
+
+//*********************************************************
+// VR stereo config functions for VR simulator
+// RLAPI VrStereoConfig LoadVrStereoConfig(VrDeviceInfo device);     // Load VR stereo config for VR simulator device parameters
+cpp unsafe fn LoadVrStereoConfig(device: VrDeviceInfo): VrStereoConfig
+fn LoadVrStereoConfig(device: VrDeviceInfo): VrStereoConfig {
+	ret unsafe { cpp.LoadVrStereoConfig(device) }
+}
+
+// RLAPI void UnloadVrStereoConfig(VrStereoConfig config);           // Unload VR stereo config
+cpp unsafe fn UnloadVrStereoConfig(config: VrStereoConfig)
+fn UnloadVrStereoConfig(config: VrStereoConfig) {
+	unsafe { cpp.UnloadVrStereoConfig(config) }
+}

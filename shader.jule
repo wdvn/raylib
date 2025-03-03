@@ -1,0 +1,61 @@
+//// Shader management functions
+//// NOTE: Shader functionality is not available on OpenGL 1.1
+//// RLAPI Shader LoadShader(const char *vsFileName, const char *fsFileName);   // Load shader from files and bind default locations
+//cpp unsafe fn LoadShader(vsFileName: *const i8, fsFileName: *const i8): Shader;
+//fn LoadShader(vsFileName: *const i8, fsFileName: *const i8): Shader {
+//    unsafe { cpp.LoadShader(vsFileName, fsFileName) }
+//}
+//
+//// RLAPI Shader LoadShaderFromMemory(const char *vsCode, const char *fsCode); // Load shader from code strings and bind default locations
+//cpp unsafe fn LoadShaderFromMemory(vsCode: *const i8, fsCode: *const i8): Shader;
+//fn LoadShaderFromMemory(vsCode: *const i8, fsCode: *const i8): Shader {
+//    unsafe { cpp.LoadShaderFromMemory(vsCode, fsCode) }
+//}
+//
+//// RLAPI bool IsShaderValid(Shader shader);                                   // Check if a shader is valid (loaded on GPU)
+//cpp unsafe fn IsShaderValid(shader: Shader): bool;
+//fn IsShaderValid(shader: Shader): bool {
+//    unsafe { cpp.IsShaderValid(shader) }
+//}
+//
+//// RLAPI int GetShaderLocation(Shader shader, const char *uniformName);       // Get shader uniform location
+//cpp unsafe fn GetShaderLocation(shader: Shader, uniformName: *const i8): i32;
+//fn GetShaderLocation(shader: Shader, uniformName: *const i8): i32 {
+//    unsafe { cpp.GetShaderLocation(shader, uniformName) }
+//}
+//
+//// RLAPI int GetShaderLocationAttrib(Shader shader, const char *attribName);  // Get shader attribute location
+//cpp unsafe fn GetShaderLocationAttrib(shader: Shader, attribName: *const i8): i32;
+//fn GetShaderLocationAttrib(shader: Shader, attribName: *const i8): i32 {
+//    unsafe { cpp.GetShaderLocationAttrib(shader, attribName) }
+//}
+//
+//// RLAPI void SetShaderValue(Shader shader, int locIndex, const void *value, int uniformType);               // Set shader uniform value
+//cpp unsafe fn SetShaderValue(shader: Shader, locIndex: i32, value: *const core::ffi::c_void, uniformType: i32);
+//fn SetShaderValue(shader: Shader, locIndex: i32, value: *const core::ffi::c_void, uniformType: i32) {
+//    unsafe { cpp.SetShaderValue(shader, locIndex, value, uniformType) }
+//}
+//
+//// RLAPI void SetShaderValueV(Shader shader, int locIndex, const void *value, int uniformType, int count);   // Set shader uniform value vector
+//cpp unsafe fn SetShaderValueV(shader: Shader, locIndex: i32, value: *const core::ffi::c_void, uniformType: i32, count: i32);
+//fn SetShaderValueV(shader: Shader, locIndex: i32, value: *const core::ffi::c_void, uniformType: i32, count: i32) {
+//    unsafe { cpp.SetShaderValueV(shader, locIndex, value, uniformType, count) }
+//}
+//
+//// RLAPI void SetShaderValueMatrix(Shader shader, int locIndex, Matrix mat);         // Set shader uniform value (matrix 4x4)
+//cpp unsafe fn SetShaderValueMatrix(shader: Shader, locIndex: i32, mat: Matrix);
+//fn SetShaderValueMatrix(shader: Shader, locIndex: i32, mat: Matrix) {
+//    unsafe { cpp.SetShaderValueMatrix(shader, locIndex, mat) }
+//}
+//
+//// RLAPI void SetShaderValueTexture(Shader shader, int locIndex, Texture2D texture); // Set shader uniform value for texture (sampler2d)
+//cpp unsafe fn SetShaderValueTexture(shader: Shader, locIndex: i32, texture: Texture2D);
+//fn SetShaderValueTexture(shader: Shader, locIndex: i32, texture: Texture2D) {
+//    unsafe { cpp.SetShaderValueTexture(shader, locIndex, texture) }
+//}
+//
+//// RLAPI void UnloadShader(Shader shader);
+//cpp unsafe fn UnloadShader(shader: Shader);
+//fn UnloadShader(shader: Shader) {
+//    unsafe { cpp.UnloadShader(shader) }
+//}
