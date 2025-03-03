@@ -1,0 +1,93 @@
+//***************************************************************************************
+// Drawing-related functions
+
+cpp unsafe fn ClearBackground(color: cpp.Color)
+fn ClearBackground(color: Color){
+    unsafe {cpp.ClearBackground(color.v)}
+}
+
+cpp unsafe fn BeginDrawing()
+fn BeginDrawing(){
+    unsafe {cpp.BeginDrawing()}
+}
+
+cpp unsafe fn EndDrawing()
+fn EndDrawing(){
+    unsafe {cpp.EndDrawing()}
+}
+
+// RLAPI void BeginMode2D(Camera2D camera);                          // Begin 2D mode with custom camera (2D)
+// RLAPI void EndMode2D(void);                                       // Ends 2D mode with custom camera
+cpp unsafe fn EndMode2D()
+fn EndMode2D(){
+    unsafe {cpp.EndMode2D()}
+}
+
+// RLAPI void BeginMode3D(Camera3D camera);                          // Begin 3D mode with custom camera (3D)
+// RLAPI void EndMode3D(void);                                       // Ends 3D mode and returns to default 2D orthographic mode
+cpp unsafe fn EndMode3D()
+fn EndMode3D(){
+    unsafe {cpp.EndMode3D()}
+}
+
+// RLAPI void BeginTextureMode(RenderTexture2D target);              // Begin drawing to render texture
+cpp unsafe fn BeginTextureMode(target: RenderTexture2D)
+fn BeginTextureMode(target: RenderTexture2D){
+    unsafe  {
+        cpp.BeginTextureMode(target)
+    }
+}
+
+// RLAPI void EndTextureMode(void);                                  // Ends drawing to render texture
+cpp unsafe fn EndTextureMode()
+fn EndTextureMode(){
+    unsafe {cpp.EndTextureMode()}
+}
+
+// RLAPI void BeginShaderMode(Shader shader);                        // Begin custom shader drawing
+cpp unsafe fn BeginShaderMode(shader: Shader)
+fn BeginShaderMode(shader: Shader){
+    unsafe {cpp.BeginShaderMode(shader)}
+}
+
+// RLAPI void EndShaderMode(void);                                   // End custom shader drawing (use default shader)
+cpp unsafe fn EndShaderMode()
+fn EndShaderMode(){
+    unsafe {cpp.EndShaderMode()}
+}
+
+// RLAPI void BeginBlendMode(int mode);                              // Begin blending mode (alpha, additive, multiplied, subtract, custom)
+cpp unsafe fn BeginBlendMode(mode:int)
+fn BeginBlendMode(mode:int){
+    unsafe {cpp.BeginBlendMode(mode)}
+}
+
+// RLAPI void EndBlendMode(void);                                    // End blending mode (reset to default: alpha blending)
+cpp unsafe fn EndBlendMode()
+fn EndBlendMode(){
+    unsafe {cpp.EndBlendMode()}
+}
+
+// RLAPI void BeginScissorMode(int x, int y, int width, int height); // Begin scissor mode (define screen area for following drawing)
+cpp unsafe fn BeginScissorMode(x:int,y:int,w:int,h:int)
+fn BeginScissorMode(x:int,y:int,w:int,h:int){
+    unsafe {cpp.BeginScissorMode(x,y,w,h)}
+}
+
+// RLAPI void EndScissorMode(void);                                  // End scissor mode
+cpp unsafe fn EndScissorMode()
+fn EndScissorMode(){
+    unsafe {cpp.EndScissorMode()}
+}
+
+// RLAPI void BeginVrStereoMode(VrStereoConfig config);              // Begin stereo rendering (requires VR simulator)
+cpp unsafe fn BeginVrStereoMode(config: VrStereoConfig)
+fn BeginVrStereoMode(config: VrStereoConfig){
+    unsafe {cpp.BeginVrStereoMode(config)}
+}
+
+// RLAPI void EndVrStereoMode(void);                                 // End stereo rendering (requires VR simulator)
+cpp unsafe fn EndVrStereoMode()
+fn EndVrStereoMode(){
+    unsafe {cpp.EndVrStereoMode()}
+}
