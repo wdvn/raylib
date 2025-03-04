@@ -107,13 +107,9 @@ cpp struct Texture {
 	mipmaps: i32
 	format:  i32
 }
-
-struct Texture {
-	v: cpp.Texture
-}
-
-type Texture2D = Texture
-type TextureCubemap = Texture
+type Texture = cpp.Texture
+type Texture2D = cpp.Texture
+type TextureCubemap = cpp.Texture
 
 #typedef
 cpp struct RenderTexture {
