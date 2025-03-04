@@ -6,15 +6,6 @@ cpp struct Vector2 {
 	y: f64
 }
 
-// struct Vector2{
-//    v: cpp.Vector2
-// }
-//
-// impl Vector2{
-// static fn new(x:f64,y:f64):Vector2{
-//     ret Vector2{v: cpp.Vector2{x:x,y:y}}}
-// }
-
 type Vector2 = cpp.Vector2
 
 #typedef
@@ -24,15 +15,8 @@ cpp struct Vector3 {
 	z: f64
 }
 
-struct Vector3 {
-	v: cpp.Vector3
-}
+type Vector3 = cpp.Vector3
 
-impl Vector3 {
-	static fn new(x: f64, y: f64, z: f64): Vector3 {
-		ret Vector3{v: cpp.Vector3{x: x, y: y, z: z}}
-	}
-}
 
 #typedef
 cpp struct Vector4 {
@@ -42,15 +26,34 @@ cpp struct Vector4 {
 	w: f64
 }
 
-struct Vector4 {
-	v: cpp.Vector4
+type Vector4 = cpp.Vector4
+type Quaternion = Vector4
+
+#typedef
+cpp struct Matrix {
+	m0:  f32
+	m4:  f32
+	m8:  f32
+	m12: f32
+
+	//
+	m1:  f32
+	m5:  f32
+	m9:  f32
+	m13: f32
+
+	m2:  f32
+	m6:  f32
+	m10: f32
+	m14: f32
+
+	m3:  f32
+	m7:  f32
+	m11: f32
+	m15: f32
 }
 
-impl Vector4 {
-	static fn new(x: f64, y: f64, z: f64, w: f64): Vector4 {
-		ret Vector4{v: cpp.Vector4{x: x, y: y, z: z, w: w}}
-	}
-}
+type Matrix = cpp.Matrix
 
 #typedef
 cpp struct Color {
@@ -61,22 +64,6 @@ cpp struct Color {
 }
 
 type Color = cpp.Color
-
-//impl Color{
-//    static fn new(r:u8,b:u8,g:u8,a:u8): Color{
-//        ret Color{v: cpp.Color{
-//            r: r,
-//            b:b,
-//            g:g,a:a
-//        }}
-//    }
-//    static fn Black(): Color{
-//        ret Color.new( 0, 0, 0, 255 )
-//    }
-//    static fn RayWhite(): Color{
-//        ret Color.new(245, 245, 245, 255 )
-//    }
-//}
 
 #typedef
 cpp struct Rectangle {
@@ -108,8 +95,8 @@ cpp struct Texture {
 	format:  i32
 }
 type Texture = cpp.Texture
-type Texture2D = cpp.Texture
-type TextureCubemap = cpp.Texture
+type Texture2D = Texture
+type TextureCubemap = Texture
 
 #typedef
 cpp struct RenderTexture {
@@ -119,7 +106,7 @@ cpp struct RenderTexture {
 }
 
 type RenderTexture = cpp.RenderTexture
-type RenderTexture2D = cpp.RenderTexture
+type RenderTexture2D = RenderTexture
 
 #typedef
 cpp struct NPatchInfo {
@@ -196,7 +183,7 @@ cpp struct Mesh {
 	animVertices: []f64    // Animated vertex positions (after bones transformations)
 	animNormals:  []f64    // Animated normals (after bones transformations)
 	boneIds:      []u8     // Vertex bone ids, max 255 bone ids, up to 4 bones influence by vertex (skinning) (shader-location = 6)
-	boneWeights:  []float  // Vertex bone weight, up to 4 bones influence by vertex (skinning) (shader-location = 7)
+	boneWeights:  []f64  // Vertex bone weight, up to 4 bones influence by vertex (skinning) (shader-location = 7)
 	boneMatrices: []Matrix // Bones animated transformation matrices
 	boneCount:    i32      // Number of bones
 
@@ -205,39 +192,16 @@ cpp struct Mesh {
 	vboId: []u32 // OpenGL Vertex Buffer Objects id (default vertex data)
 }
 
+type Mesh = cpp.Mesh
+
 #typedef
 cpp struct Shader {
 	id:   u32
-	locs: []int
+	locs: []i32
 }
 
 type Shader = cpp.Shader
 
-#typedef
-cpp struct Matrix {
-	m0:  f32
-	m4:  f32
-	m8:  f32
-	m12: f32
-
-	//
-	m1:  f32
-	m5:  f32
-	m9:  f32
-	m13: f32
-
-	m2:  f32
-	m6:  f32
-	m10: f32
-	m14: f32
-
-	m3:  f32
-	m7:  f32
-	m11: f32
-	m15: f32
-}
-
-type Matrix = cpp.Matrix
 
 #typedef
 cpp struct VrStereoConfig {
@@ -268,3 +232,4 @@ cpp struct VrDeviceInfo {
 }
 
 type VrDeviceInfo = cpp.VrDeviceInfo
+
