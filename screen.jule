@@ -306,3 +306,52 @@ cpp unsafe fn UnloadVrStereoConfig(config: VrStereoConfig)
 fn UnloadVrStereoConfig(config: VrStereoConfig) {
 	unsafe { cpp.UnloadVrStereoConfig(config) }
 }
+
+//**********************************************************************
+// RLAPI Ray GetScreenToWorldRay(Vector2 position, Camera camera);         // Get a ray trace from screen position (i.e mouse)
+cpp unsafe fn GetScreenToWorldRay(position: Vector2, camera: Camera): Ray
+fn GetScreenToWorldRay(position: Vector2, camera: Camera): Ray {
+	ret unsafe { cpp.GetScreenToWorldRay(position, camera) }
+}
+
+// RLAPI Ray GetScreenToWorldRayEx(Vector2 position, Camera camera, int width, int height); // Get a ray trace from screen position (i.e mouse) in a viewport
+cpp unsafe fn GetScreenToWorldRayEx(position: Vector2, camera: Camera, width: i32, height: i32): Ray
+fn GetScreenToWorldRayEx(position: Vector2, camera: Camera, width: i32, height: i32): Ray {
+	ret unsafe { cpp.GetScreenToWorldRayEx(position, camera, width, height) }
+}
+
+// RLAPI Vector2 GetWorldToScreen(Vector3 position, Camera camera);        // Get the screen space position for a 3d world space position
+cpp unsafe fn GetWorldToScreen(position: Vector3, camera: Camera): Vector2
+fn GetWorldToScreen(position: Vector3, camera: Camera): Vector2 {
+	ret unsafe { cpp.GetWorldToScreen(position, camera) }
+}
+
+// RLAPI Vector2 GetWorldToScreenEx(Vector3 position, Camera camera, int width, int height); // Get size position for a 3d world space position
+cpp unsafe fn GetWorldToScreenEx(position: Vector3, camera: Camera, width: i32, height: i32): Vector2
+fn GetWorldToScreenEx(position: Vector3, camera: Camera, width: i32, height: i32): Vector2 {
+	ret unsafe { cpp.GetWorldToScreenEx(position, camera, width, height) }
+}
+
+// RLAPI Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera);    // Get the screen space position for a 2d camera world space position
+cpp unsafe fn GetWorldToScreen2D(position: Vector2, camera: Camera2D): Vector2
+fn GetWorldToScreen2D(position: Vector2, camera: Camera2D): Vector2 {
+	ret unsafe { cpp.GetWorldToScreen2D(position, camera) }
+}
+
+// RLAPI Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera);    // Get the world space position for a 2d camera screen space position
+cpp unsafe fn GetScreenToWorld2D(position: Vector2, camera: Camera2D): Vector2
+fn GetScreenToWorld2D(position: Vector2, camera: Camera2D): Vector2 {
+	ret unsafe { cpp.GetScreenToWorld2D(position, camera) }
+}
+
+// RLAPI Matrix GetCameraMatrix(Camera camera);                            // Get camera transform matrix (view matrix)
+cpp unsafe fn GetCameraMatrix(camera: Camera): Matrix
+fn GetCameraMatrix(camera: Camera): Matrix {
+	ret unsafe { cpp.GetCameraMatrix(camera) }
+}
+
+// RLAPI Matrix GetCameraMatrix2D(Camera2D camera);                        // Get camera 2d transform matrix
+cpp unsafe fn GetCameraMatrix2D(camera: Camera2D): Matrix
+fn GetCameraMatrix2D(camera: Camera2D): Matrix {
+	ret unsafe { cpp.GetCameraMatrix2D(camera) }
+}

@@ -17,7 +17,6 @@ cpp struct Vector3 {
 
 type Vector3 = cpp.Vector3
 
-
 #typedef
 cpp struct Vector4 {
 	x: f64
@@ -94,6 +93,7 @@ cpp struct Texture {
 	mipmaps: i32
 	format:  i32
 }
+
 type Texture = cpp.Texture
 type Texture2D = Texture
 type TextureCubemap = Texture
@@ -183,7 +183,7 @@ cpp struct Mesh {
 	animVertices: []f64    // Animated vertex positions (after bones transformations)
 	animNormals:  []f64    // Animated normals (after bones transformations)
 	boneIds:      []u8     // Vertex bone ids, max 255 bone ids, up to 4 bones influence by vertex (skinning) (shader-location = 6)
-	boneWeights:  []f64  // Vertex bone weight, up to 4 bones influence by vertex (skinning) (shader-location = 7)
+	boneWeights:  []f64    // Vertex bone weight, up to 4 bones influence by vertex (skinning) (shader-location = 7)
 	boneMatrices: []Matrix // Bones animated transformation matrices
 	boneCount:    i32      // Number of bones
 
@@ -205,48 +205,142 @@ type Shader = cpp.Shader
 // MaterialMap
 #typedef
 cpp struct MaterialMap {
-     texture:Texture2D      // Material map texture
-     color:Color            // Material map color
-     value:f64            // Material map value
+	texture: Texture2D // Material map texture
+	color:   Color     // Material map color
+	value:   f64       // Material map value
 }
 
-type  MaterialMap = cpp.MaterialMap
+type MaterialMap = cpp.MaterialMap
 
 #typedef
 cpp struct Material {
-     shader: Shader          // Material shader
-     maps: *MaterialMap      // Material maps array (MAX_MATERIAL_MAPS)
-     params:[4]f64        // Material generic parameters (if required)
+	shader: Shader       // Material shader
+	maps:   *MaterialMap // Material maps array (MAX_MATERIAL_MAPS)
+	params: [4]f64       // Material generic parameters (if required)
 }
 
 type Material = cpp.Material
 
+#typedef
+cpp struct Transform {
+	translation: Vector3    // Translation
+	rotation:    Quaternion // Rotation
+	scale:       Vector3    // Scale
+}
+
+type Transform = cpp.Transform
+
 // Bone, skeletal animation bone
 #typedef
 cpp struct BoneInfo {
-    name: [32]cpp.char        // Bone name
-    parent: i32         // Bone parent
+	name:   [32]cpp.char // Bone name
+	parent: i32          // Bone parent
 }
 
 type BoneInfo = cpp.BoneInfo
 
 // Model, meshes, materials and animation data
 #typedef
-cpp  struct Model {
-     transform: Matrix      // Local transform matrix
+cpp struct Model {
+	transform: Matrix // Local transform matrix
 
-     meshCount: i32          // Number of meshes
-     materialCount: i32      // Number of materials
-     meshes: *Mesh           // Meshes array
-     materials: *Material    // Materials array
-     meshMaterial: *i32      // Mesh material number
+	meshCount:     i32       // Number of meshes
+	materialCount: i32       // Number of materials
+	meshes:        *Mesh     // Meshes array
+	materials:     *Material // Materials array
+	meshMaterial:  *i32      // Mesh material number
 
-    // Animation data
-    boneCount:i32          // Number of bones
-    bones: *BoneInfo        // Bones information (skeleton)
-    bindPose: *Transform    // Bones base transformation (pose)
-} 
+	// Animation data
+	boneCount: i32        // Number of bones
+	bones:     *BoneInfo  // Bones information (skeleton)
+	bindPose:  *Transform // Bones base transformation (pose)
+}
+
 type Model = cpp.Model
+
+// ModelAnimation
+#typedef
+cpp struct ModelAnimation {
+	boneCount:  i32          // Number of bones
+	frameCount: i32          // Number of animation frames
+	bones:      *BoneInfo    // Bones information (skeleton)
+	framePoses: **Transform  // Poses array by frame
+	name:       [32]cpp.char // Animation name
+}
+
+type ModelAnimation = cpp.ModelAnimation
+
+// Ray, ray for raycasting
+#typedef
+cpp struct Ray {
+	position:  Vector3 // Ray position (origin)
+	direction: Vector3 // Ray direction (normalized)
+}
+
+type Ray = cpp.Ray
+
+// RayCollision, ray hit information
+#typedef
+cpp struct RayCollision {
+	hit:      bool    // Did the ray hit something?
+	distance: f64     // Distance to the nearest hit
+	point:    Vector3 // Point of the nearest hit
+	normal:   Vector3 // Surface normal of hit
+}
+
+type RayCollision = cpp.RayCollision
+
+// BoundingBox
+#typedef
+cpp struct BoundingBox {
+	min: Vector3 // Minimum vertex box-corner
+	max: Vector3 // Maximum vertex box-corner
+}
+
+type BoundingBox = cpp.BoundingBox
+
+// Wave, audio wave data
+#typedef
+cpp struct Wave {
+	frameCount: u32  // Total number of frames (considering channels)
+	sampleRate: u32  // Frequency (samples per second)
+	sampleSize: u32  // Bit depth (bits per sample): 8, 16, 32 (24 not supported)
+	channels:   u32  // Number of channels (1-mono, 2-stereo, ...)
+	data:       *any // Buffer data pointer
+}
+
+type Wave = cpp.Wave
+
+//// Opaque structs declaration
+//// NOTE: Actual structs are defined internally in raudio module
+//typedef struct rAudioBuffer rAudioBuffer;
+//typedef struct rAudioProcessor rAudioProcessor;
+//
+//// AudioStream, custom audio stream
+//typedef struct AudioStream {
+//    rAudioBuffer *buffer;       // Pointer to internal data used by the audio system
+//    rAudioProcessor *processor; // Pointer to internal data processor, useful for audio effects
+//
+//    unsigned int sampleRate;    // Frequency (samples per second)
+//    unsigned int sampleSize;    // Bit depth (bits per sample): 8, 16, 32 (24 not supported)
+//    unsigned int channels;      // Number of channels (1-mono, 2-stereo, ...)
+//} AudioStream;
+//
+//// Sound
+//typedef struct Sound {
+//    AudioStream stream;         // Audio stream
+//    unsigned int frameCount;    // Total number of frames (considering channels)
+//} Sound;
+//
+//// Music, audio stream, anything longer than ~10 seconds should be streamed
+//typedef struct Music {
+//    AudioStream stream;         // Audio stream
+//    unsigned int frameCount;    // Total number of frames (considering channels)
+//    bool looping;               // Music looping enable
+//
+//    int ctxType;                // Type of music context (audio filetype)
+//    void *ctxData;              // Audio context data, depends on type
+//} Music;
 
 #typedef
 cpp struct VrStereoConfig {
@@ -278,3 +372,34 @@ cpp struct VrDeviceInfo {
 
 type VrDeviceInfo = cpp.VrDeviceInfo
 
+// File path list
+#typedef
+cpp struct FilePathList {
+	capacity: u32        // Filepaths max entries
+	count:    u32        // Filepaths entries count
+	paths:    **cpp.char // Filepaths entries
+}
+
+type FilePathList = cpp.FilePathList
+
+// Automation event
+#typedef
+cpp struct AutomationEvent {
+	frame: u32 // Event frame
+
+	//TODO: origin name of this field is type
+	_type:  u32    // Event type AutomationEventType
+	params: [4]i32 // Event parameters if required
+}
+
+type AutomationEvent = cpp.AutomationEvent
+
+// Automation event list
+#typedef
+cpp struct AutomationEventList {
+	capacity: u32              // Events max entries MAX_AUTOMATION_EVENTS
+	count:    u32              // Events entries count
+	events:   *AutomationEvent // Events entries
+}
+
+type AutomationEventList = cpp.AutomationEventList
