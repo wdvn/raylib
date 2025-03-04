@@ -202,6 +202,51 @@ cpp struct Shader {
 
 type Shader = cpp.Shader
 
+// MaterialMap
+#typedef
+cpp struct MaterialMap {
+     texture:Texture2D      // Material map texture
+     color:Color            // Material map color
+     value:f64            // Material map value
+}
+
+type  MaterialMap = cpp.MaterialMap
+
+#typedef
+cpp struct Material {
+     shader: Shader          // Material shader
+     maps: *MaterialMap      // Material maps array (MAX_MATERIAL_MAPS)
+     params:[4]f64        // Material generic parameters (if required)
+}
+
+type Material = cpp.Material
+
+// Bone, skeletal animation bone
+#typedef
+cpp struct BoneInfo {
+    name: [32]cpp.char        // Bone name
+    parent: i32         // Bone parent
+}
+
+type BoneInfo = cpp.BoneInfo
+
+// Model, meshes, materials and animation data
+#typedef
+cpp  struct Model {
+     transform: Matrix      // Local transform matrix
+
+     meshCount: i32          // Number of meshes
+     materialCount: i32      // Number of materials
+     meshes: *Mesh           // Meshes array
+     materials: *Material    // Materials array
+     meshMaterial: *i32      // Mesh material number
+
+    // Animation data
+    boneCount:i32          // Number of bones
+    bones: *BoneInfo        // Bones information (skeleton)
+    bindPose: *Transform    // Bones base transformation (pose)
+} 
+type Model = cpp.Model
 
 #typedef
 cpp struct VrStereoConfig {
