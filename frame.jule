@@ -1,0 +1,43 @@
+// Timing-related functions
+// RLAPI void SetTargetFPS(int fps);                                 // Set target FPS (maximum)
+cpp unsafe fn SetTargetFPS(fps: i32)
+fn SetTargetFPS(fps: i32) {
+	unsafe { cpp.SetTargetFPS(fps) }
+}
+
+// RLAPI float GetFrameTime(void);                                   // Get time in seconds for last frame drawn (delta time)
+cpp unsafe fn GetFrameTime(): f32
+fn GetFrameTime(): f32 {
+	ret unsafe { cpp.GetFrameTime() }
+}
+
+// RLAPI double GetTime(void);                                       // Get elapsed time in seconds since InitWindow()
+cpp unsafe fn GetTime(): f64
+fn GetTime(): f64 {
+	ret unsafe { cpp.GetTime() }
+}
+
+// RLAPI int GetFPS(void);                                           // Get current FPS
+cpp unsafe fn GetFPS(): i32
+fn GetFPS(): i32 {
+	ret unsafe { cpp.GetFPS() }
+}
+
+//*******************************************************
+// RLAPI void SwapScreenBuffer(void);                                // Swap back buffer with front buffer (screen drawing)
+cpp unsafe fn SwapScreenBuffer()
+fn SwapScreenBuffer() {
+	unsafe { cpp.SwapScreenBuffer() }
+}
+
+// RLAPI void PollInputEvents(void);                                 // Register all input events
+cpp unsafe fn PollInputEvents()
+fn PollInputEvents() {
+	unsafe { cpp.PollInputEvents() }
+}
+
+// RLAPI void WaitTime(double seconds);                              // Wait for some time (halt program execution)
+cpp unsafe fn WaitTime(seconds: f64)
+fn WaitTime(seconds: f64) {
+	unsafe { cpp.WaitTime(seconds) }
+}
