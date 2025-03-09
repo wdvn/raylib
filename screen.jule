@@ -153,8 +153,8 @@ fn SetWindowSize(w: int, h: int) {
 }
 
 // RLAPI void SetWindowOpacity(float opacity);                       // Set window opacity [0.0f..1.0f]
-cpp unsafe fn SetWindowOpacity(opacity: f64)
-fn SetWindowOpacity(opacity: f64) {
+cpp unsafe fn SetWindowOpacity(opacity: f32)
+fn SetWindowOpacity(opacity: f32) {
 	unsafe { cpp.SetWindowOpacity(opacity) }
 }
 

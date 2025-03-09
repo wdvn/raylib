@@ -119,8 +119,8 @@ fn DrawLineV(start: Vector2, end: Vector2, color: Color) {
 }
 
 // RLAPI void DrawLineEx(Vector2 startPos, Vector2 endPos, float thick, Color color);                       // Draw a line (using triangles/quads)
-cpp unsafe fn DrawLineEx(start: Vector2, end: Vector2, thick: f64, color: Color)
-fn DrawLineEx(start: Vector2, end: Vector2, thick: f64, color: Color) {
+cpp unsafe fn DrawLineEx(start: Vector2, end: Vector2, thick: f32, color: Color)
+fn DrawLineEx(start: Vector2, end: Vector2, thick: f32, color: Color) {
 	unsafe { cpp.DrawLineEx(start, end, thick, color) }
 }
 
@@ -131,68 +131,68 @@ fn DrawLineStrip(points: []Vector2, pointCount: i32, color: Color) {
 }
 
 // RLAPI void DrawLineBezier(Vector2 startPos, Vector2 endPos, float thick, Color color);                   // Draw line segment cubic-bezier in-out interpolation
-cpp unsafe fn DrawLineBezier(start: Vector2, end: Vector2, thick: f64, color: Color)
-fn DrawLineBezier(start: Vector2, end: Vector2, thick: f64, color: Color) {
+cpp unsafe fn DrawLineBezier(start: Vector2, end: Vector2, thick: f32, color: Color)
+fn DrawLineBezier(start: Vector2, end: Vector2, thick: f32, color: Color) {
 	unsafe { cpp.DrawLineBezier(start, end, thick, color) }
 }
 
 // RLAPI void DrawCircle(int centerX, int centerY, float radius, Color color);                              // Draw a color-filled circle
-cpp unsafe fn DrawCircle(x: i32, y: i32, radius: f64, color: Color)
-fn DrawCircle(x: i32, y: i32, radius: f64, color: Color) {
+cpp unsafe fn DrawCircle(x: i32, y: i32, radius: f32, color: Color)
+fn DrawCircle(x: i32, y: i32, radius: f32, color: Color) {
 	unsafe { cpp.DrawCircle(x, y, radius, color) }
 }
 
 // RLAPI void DrawCircleSectorLines(Vector2 center, float radius, float startAngle, float endAngle, int segments, Color color); // Draw circle sector outline
-cpp unsafe fn DrawCircleSectorLines(center: Vector2, radius: f64, startAngle: f64, endAngle: f64, segments: i32, color: Color)
-fn DrawCircleSectorLines(center: Vector2, radius: f64, startAngle: f64, endAngle: f64, segments: i32, color: Color) {
+cpp unsafe fn DrawCircleSectorLines(center: Vector2, radius: f32, startAngle: f32, endAngle: f32, segments: i32, color: Color)
+fn DrawCircleSectorLines(center: Vector2, radius: f32, startAngle: f32, endAngle: f32, segments: i32, color: Color) {
 	unsafe { DrawCircleSectorLines(center, radius, startAngle, endAngle, segments, color) }
 }
 
 // RLAPI void DrawCircleGradient(int centerX, int centerY, float radius, Color inner, Color outer);         // Draw a gradient-filled circle
-cpp unsafe fn DrawCircleGradient(x: i32, y: i32, radius: f64, inner: Color, color: Color)
-fn DrawCircleGradient(x: i32, y: i32, radius: f64, inner: Color, color: Color) {
+cpp unsafe fn DrawCircleGradient(x: i32, y: i32, radius: f32, inner: Color, color: Color)
+fn DrawCircleGradient(x: i32, y: i32, radius: f32, inner: Color, color: Color) {
 	unsafe { DrawCircleGradient(x, y, radius, inner, color) }
 }
 
 // RLAPI void DrawCircleV(Vector2 center, float radius, Color color);                                       // Draw a color-filled circle (Vector version)
-cpp unsafe fn DrawCircleV(center: Vector2, radius: f64, color: Color)
-fn DrawCircleV(center: Vector2, radius: f64, color: Color) {
+cpp unsafe fn DrawCircleV(center: Vector2, radius: f32, color: Color)
+fn DrawCircleV(center: Vector2, radius: f32, color: Color) {
 	unsafe { DrawCircleV(center, radius, color) }
 }
 
 // RLAPI void DrawCircleLines(int centerX, int centerY, float radius, Color color);                         // Draw circle outline
-cpp unsafe fn DrawCircleLines(x: i32, y: i32, radius: f64, color: Color)
-fn DrawCircleLines(x: i32, y: i32, radius: f64, color: Color) {
+cpp unsafe fn DrawCircleLines(x: i32, y: i32, radius: f32, color: Color)
+fn DrawCircleLines(x: i32, y: i32, radius: f32, color: Color) {
 	unsafe { cpp.DrawCircleLines(x, y, radius, color) }
 }
 
 // RLAPI void DrawCircleLinesV(Vector2 center, float radius, Color color);                                  // Draw circle outline (Vector version)
-cpp unsafe fn DrawCircleLinesV(center: Vector2, radius: f64, color: Color)
-fn DrawCircleLinesV(center: Vector2, radius: f64, color: Color) {
+cpp unsafe fn DrawCircleLinesV(center: Vector2, radius: f32, color: Color)
+fn DrawCircleLinesV(center: Vector2, radius: f32, color: Color) {
 	unsafe { cpp.DrawCircleLinesV(center, radius, color) }
 }
 
 // RLAPI void DrawEllipse(int centerX, int centerY, float radiusH, float radiusV, Color color);             // Draw ellipse
-cpp unsafe fn DrawEllipse(centerX: i32, centerY: i32, radiusH: f64, radiusV: f64, color: Color)
-fn DrawEllipse(centerX: i32, centerY: i32, radiusH: f64, radiusV: f64, color: Color) {
+cpp unsafe fn DrawEllipse(centerX: i32, centerY: i32, radiusH: f32, radiusV: f32, color: Color)
+fn DrawEllipse(centerX: i32, centerY: i32, radiusH: f32, radiusV: f32, color: Color) {
 	unsafe { cpp.DrawEllipse(centerX, centerY, radiusH, radiusV, color) }
 }
 
 // RLAPI void DrawEllipseLines(int centerX, int centerY, float radiusH, float radiusV, Color color);        // Draw ellipse outline
-cpp unsafe fn DrawEllipseLines(centerX: i32, centerY: i32, radiusH: f64, radiusV: f64, color: Color)
-fn DrawEllipseLines(centerX: i32, centerY: i32, radiusH: f64, radiusV: f64, color: Color) {
+cpp unsafe fn DrawEllipseLines(centerX: i32, centerY: i32, radiusH: f32, radiusV: f32, color: Color)
+fn DrawEllipseLines(centerX: i32, centerY: i32, radiusH: f32, radiusV: f32, color: Color) {
 	unsafe { cpp.DrawEllipseLines(centerX, centerY, radiusH, radiusV, color) }
 }
 
 // RLAPI void DrawRing(Vector2 center, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color); // Draw ring
-cpp unsafe fn DrawRing(center: Vector2, innerRadius: f64, outerRadius: f64, startAngle: f64, endAngle: f64, segments: i32, color: Color)
-fn DrawRing(center: Vector2, innerRadius: f64, outerRadius: f64, startAngle: f64, endAngle: f64, segments: i32, color: Color) {
+cpp unsafe fn DrawRing(center: Vector2, innerRadius: f32, outerRadius: f32, startAngle: f32, endAngle: f32, segments: i32, color: Color)
+fn DrawRing(center: Vector2, innerRadius: f32, outerRadius: f32, startAngle: f32, endAngle: f32, segments: i32, color: Color) {
 	unsafe { cpp.DrawRing(center, innerRadius, outerRadius, startAngle, endAngle, segments, color) }
 }
 
 // RLAPI void DrawRingLines(Vector2 center, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);    // Draw ring outline
-cpp unsafe fn DrawRingLines(center: Vector2, innerRadius: f64, outerRadius: f64, startAngle: f64, endAngle: f64, segments: i32, color: Color)
-fn DrawRingLines(center: Vector2, innerRadius: f64, outerRadius: f64, startAngle: f64, endAngle: f64, segments: i32, color: Color) {
+cpp unsafe fn DrawRingLines(center: Vector2, innerRadius: f32, outerRadius: f32, startAngle: f32, endAngle: f32, segments: i32, color: Color)
+fn DrawRingLines(center: Vector2, innerRadius: f32, outerRadius: f32, startAngle: f32, endAngle: f32, segments: i32, color: Color) {
 	unsafe { cpp.DrawRingLines(center, innerRadius, outerRadius, startAngle, endAngle, segments, color) }
 }
 
@@ -215,8 +215,8 @@ fn DrawRectangleRec(rec: Rectangle, color: Color) {
 }
 
 // RLAPI void DrawRectanglePro(Rectangle rec, Vector2 origin, float rotation, Color color);                 // Draw a color-filled rectangle with pro parameters
-cpp unsafe fn DrawRectanglePro(rec: Rectangle, origin: Vector2, rotation: f64, color: Color)
-fn DrawRectanglePro(rec: Rectangle, origin: Vector2, rotation: f64, color: Color) {
+cpp unsafe fn DrawRectanglePro(rec: Rectangle, origin: Vector2, rotation: f32, color: Color)
+fn DrawRectanglePro(rec: Rectangle, origin: Vector2, rotation: f32, color: Color) {
 	unsafe { cpp.DrawRectanglePro(rec, origin, rotation, color) }
 }
 
@@ -245,26 +245,26 @@ fn DrawRectangleLines(posX: i32, posY: i32, width: i32, height: i32, color: Colo
 }
 
 // RLAPI void DrawRectangleLinesEx(Rectangle rec, float lineThick, Color color);                            // Draw rectangle outline with extended parameters
-cpp unsafe fn DrawRectangleLinesEx(rec: Rectangle, lineThick: f64, color: Color)
-fn DrawRectangleLinesEx(rec: Rectangle, lineThick: f64, color: Color) {
+cpp unsafe fn DrawRectangleLinesEx(rec: Rectangle, lineThick: f32, color: Color)
+fn DrawRectangleLinesEx(rec: Rectangle, lineThick: f32, color: Color) {
 	unsafe { cpp.DrawRectangleLinesEx(rec, lineThick, color) }
 }
 
 // RLAPI void DrawRectangleRounded(Rectangle rec, float roundness, int segments, Color color);              // Draw rectangle with rounded edges
-cpp unsafe fn DrawRectangleRounded(rec: Rectangle, roundness: f64, segments: i32, color: Color)
-fn DrawRectangleRounded(rec: Rectangle, roundness: f64, segments: i32, color: Color) {
+cpp unsafe fn DrawRectangleRounded(rec: Rectangle, roundness: f32, segments: i32, color: Color)
+fn DrawRectangleRounded(rec: Rectangle, roundness: f32, segments: i32, color: Color) {
 	unsafe { cpp.DrawRectangleRounded(rec, roundness, segments, color) }
 }
 
 // RLAPI void DrawRectangleRoundedLines(Rectangle rec, float roundness, int segments, Color color);         // Draw rectangle lines with rounded edges
-cpp unsafe fn DrawRectangleRoundedLines(rec: Rectangle, roundness: f64, segments: i32, color: Color)
-fn DrawRectangleRoundedLines(rec: Rectangle, roundness: f64, segments: i32, color: Color) {
+cpp unsafe fn DrawRectangleRoundedLines(rec: Rectangle, roundness: f32, segments: i32, color: Color)
+fn DrawRectangleRoundedLines(rec: Rectangle, roundness: f32, segments: i32, color: Color) {
 	unsafe { cpp.DrawRectangleRoundedLines(rec, roundness, segments, color) }
 }
 
 // RLAPI void DrawRectangleRoundedLinesEx(Rectangle rec, float roundness, int segments, float lineThick, Color color); // Draw rectangle with rounded edges outline
-cpp unsafe fn DrawRectangleRoundedLinesEx(rec: Rectangle, roundness: f64, segments: i32, lineThick: f64, color: Color)
-fn DrawRectangleRoundedLinesEx(rec: Rectangle, roundness: f64, segments: i32, lineThick: f64, color: Color) {
+cpp unsafe fn DrawRectangleRoundedLinesEx(rec: Rectangle, roundness: f32, segments: i32, lineThick: f32, color: Color)
+fn DrawRectangleRoundedLinesEx(rec: Rectangle, roundness: f32, segments: i32, lineThick: f32, color: Color) {
 	unsafe { cpp.DrawRectangleRoundedLinesEx(rec, roundness, segments, lineThick, color) }
 }
 
@@ -293,20 +293,20 @@ fn DrawTriangleStrip(points: []Vector2, pointCount: i32, color: Color) {
 }
 
 // RLAPI void DrawPoly(Vector2 center, int sides, float radius, float rotation, Color color);               // Draw a regular polygon (Vector version)
-cpp unsafe fn DrawPoly(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color)
-fn DrawPoly(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color) {
+cpp unsafe fn DrawPoly(center: Vector2, sides: i32, radius: f32, rotation: f32, color: Color)
+fn DrawPoly(center: Vector2, sides: i32, radius: f32, rotation: f32, color: Color) {
 	unsafe { cpp.DrawPoly(center, sides, radius, rotation, color) }
 }
 
 // RLAPI void DrawPolyLines(Vector2 center, int sides, float radius, float rotation, Color color);          // Draw a polygon outline of n sides
-cpp unsafe fn DrawPolyLines(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color)
-fn DrawPolyLines(center: Vector2, sides: i32, radius: f64, rotation: f64, color: Color) {
+cpp unsafe fn DrawPolyLines(center: Vector2, sides: i32, radius: f32, rotation: f32, color: Color)
+fn DrawPolyLines(center: Vector2, sides: i32, radius: f32, rotation: f32, color: Color) {
 	unsafe { cpp.DrawPolyLines(center, sides, radius, rotation, color) }
 }
 
 // RLAPI void DrawPolyLinesEx(Vector2 center, int sides, float radius, float rotation, float lineThick, Color color); // Draw a polygon outline of n sides with extended parameters
-cpp unsafe fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f64, rotation: f64, lineThick: f64, color: Color)
-fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f64, rotation: f64, lineThick: f64, color: Color) {
+cpp unsafe fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f32, rotation: f32, lineThick: f32, color: Color)
+fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f32, rotation: f32, lineThick: f32, color: Color) {
 	unsafe { cpp.DrawPolyLinesEx(center, sides, radius, rotation, lineThick, color) }
 }
 

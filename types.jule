@@ -2,27 +2,27 @@ cpp type char: byte
 
 #typedef
 cpp struct Vector2 {
-	x: f64
-	y: f64
+	x: f32
+	y: f32
 }
 
 type Vector2 = cpp.Vector2
 
 #typedef
 cpp struct Vector3 {
-	x: f64
-	y: f64
-	z: f64
+	x: f32
+	y: f32
+	z: f32
 }
 
 type Vector3 = cpp.Vector3
 
 #typedef
 cpp struct Vector4 {
-	x: f64
-	y: f64
-	z: f64
-	w: f64
+	x: f32
+	y: f32
+	z: f32
+	w: f32
 }
 
 type Vector4 = cpp.Vector4
@@ -148,7 +148,7 @@ cpp struct Camera3D {
 	position:   Vector3 // Camera position
 	target:     Vector3 // Camera target it looks-at
 	up:         Vector3 // Camera up vector (rotation over its axis)
-	fovy:       f64     // Camera field-of-view aperture in Y (degrees) in perspective, used as near plane width in orthographic
+	fovy:       f32     // Camera field-of-view aperture in Y (degrees) in perspective, used as near plane width in orthographic
 	projection: int     // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
 }
 
@@ -159,8 +159,8 @@ type Camera = Camera3D
 cpp struct Camera2D {
 	offset:   Vector2 // Camera offset (displacement from target)
 	target:   Vector2 // Camera target (rotation and zoom origin)
-	rotation: f64     // Camera rotation in degrees
-	zoom:     f64     // Camera zoom (scaling), should be 1.0f by default
+	rotation: f32     // Camera rotation in degrees
+	zoom:     f32     // Camera zoom (scaling), should be 1.0f by default
 }
 
 type Camera2D = cpp.Camera2D
@@ -171,19 +171,19 @@ cpp struct Mesh {
 	triangleCount: i32 // Number of triangles stored (indexed or not)
 
 	// Vertex attributes data
-	vertices:   []f64 // Vertex position (XYZ - 3 components per vertex) (shader-location = 0)
-	texcoords:  []f64 // Vertex texture coordinates (UV - 2 components per vertex) (shader-location = 1)
-	texcoords2: []f64 // Vertex texture second coordinates (UV - 2 components per vertex) (shader-location = 5)
-	normals:    []f64 // Vertex normals (XYZ - 3 components per vertex) (shader-location = 2)
-	tangents:   []f64 // Vertex tangents (XYZW - 4 components per vertex) (shader-location = 4)
+	vertices:   []f32 // Vertex position (XYZ - 3 components per vertex) (shader-location = 0)
+	texcoords:  []f32 // Vertex texture coordinates (UV - 2 components per vertex) (shader-location = 1)
+	texcoords2: []f32 // Vertex texture second coordinates (UV - 2 components per vertex) (shader-location = 5)
+	normals:    []f32 // Vertex normals (XYZ - 3 components per vertex) (shader-location = 2)
+	tangents:   []f32 // Vertex tangents (XYZW - 4 components per vertex) (shader-location = 4)
 	colors:     []u8  // Vertex colors (RGBA - 4 components per vertex) (shader-location = 3)
 	indices:    []u8  // Vertex indices (in case vertex data comes indexed)
 
 	// Animation vertex data
-	animVertices: []f64    // Animated vertex positions (after bones transformations)
-	animNormals:  []f64    // Animated normals (after bones transformations)
+	animVertices: []f32    // Animated vertex positions (after bones transformations)
+	animNormals:  []f32    // Animated normals (after bones transformations)
 	boneIds:      []u8     // Vertex bone ids, max 255 bone ids, up to 4 bones influence by vertex (skinning) (shader-location = 6)
-	boneWeights:  []f64    // Vertex bone weight, up to 4 bones influence by vertex (skinning) (shader-location = 7)
+	boneWeights:  []f32    // Vertex bone weight, up to 4 bones influence by vertex (skinning) (shader-location = 7)
 	boneMatrices: []Matrix // Bones animated transformation matrices
 	boneCount:    i32      // Number of bones
 
@@ -207,7 +207,7 @@ type Shader = cpp.Shader
 cpp struct MaterialMap {
 	texture: Texture2D // Material map texture
 	color:   Color     // Material map color
-	value:   f64       // Material map value
+	value:   f32       // Material map value
 }
 
 type MaterialMap = cpp.MaterialMap
@@ -216,7 +216,7 @@ type MaterialMap = cpp.MaterialMap
 cpp struct Material {
 	shader: Shader       // Material shader
 	maps:   *MaterialMap // Material maps array (MAX_MATERIAL_MAPS)
-	params: [4]f64       // Material generic parameters (if required)
+	params: [4]f32       // Material generic parameters (if required)
 }
 
 type Material = cpp.Material
@@ -283,7 +283,7 @@ type Ray = cpp.Ray
 #typedef
 cpp struct RayCollision {
 	hit:      bool    // Did the ray hit something?
-	distance: f64     // Distance to the nearest hit
+	distance: f32     // Distance to the nearest hit
 	point:    Vector3 // Point of the nearest hit
 	normal:   Vector3 // Surface normal of hit
 }
@@ -346,12 +346,12 @@ type Wave = cpp.Wave
 cpp struct VrStereoConfig {
 	projection:        [2]Matrix // VR projection matrices (per eye)
 	viewOffset:        [2]Matrix // VR view offset matrices (per eye)
-	leftLensCenter:    [2]f64    // VR left lens center
-	rightLensCenter:   [2]f64    // VR right lens center
-	leftScreenCenter:  [2]f64    // VR left screen center
-	rightScreenCenter: [2]f64    // VR right screen center
-	scale:             [2]f64    // VR distortion scale
-	scaleIn:           [2]f64    // VR distortion scale in
+	leftLensCenter:    [2]f32    // VR left lens center
+	rightLensCenter:   [2]f32    // VR right lens center
+	leftScreenCenter:  [2]f32    // VR left screen center
+	rightScreenCenter: [2]f32    // VR right screen center
+	scale:             [2]f32    // VR distortion scale
+	scaleIn:           [2]f32    // VR distortion scale in
 }
 
 type VrStereoConfig = cpp.VrStereoConfig
@@ -361,13 +361,13 @@ type VrStereoConfig = cpp.VrStereoConfig
 cpp struct VrDeviceInfo {
 	hResolution:            i32    // Horizontal resolution in pixels
 	vResolution:            i32    // Vertical resolution in pixels
-	hScreenSize:            f64    // Horizontal size in meters
-	vScreenSize:            f64    // Vertical size in meters
-	eyeToScreenDistance:    f64    // Distance between eye and display in meters
-	lensSeparationDistance: f64    // Lens separation distance in meters
-	interpupillaryDistance: f64    // IPD (distance between pupils) in meters
-	lensDistortionValues:   [4]f64 // Lens distortion constant parameters
-	chromaAbCorrection:     [4]f64 // Chromatic aberration correction parameters
+	hScreenSize:            f32    // Horizontal size in meters
+	vScreenSize:            f32    // Vertical size in meters
+	eyeToScreenDistance:    f32    // Distance between eye and display in meters
+	lensSeparationDistance: f32    // Lens separation distance in meters
+	interpupillaryDistance: f32    // IPD (distance between pupils) in meters
+	lensDistortionValues:   [4]f32 // Lens distortion constant parameters
+	chromaAbCorrection:     [4]f32 // Chromatic aberration correction parameters
 }
 
 type VrDeviceInfo = cpp.VrDeviceInfo

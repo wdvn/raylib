@@ -12,8 +12,8 @@ fn GetFrameTime(): f32 {
 }
 
 // RLAPI double GetTime(void);                                       // Get elapsed time in seconds since InitWindow()
-cpp unsafe fn GetTime(): f64
-fn GetTime(): f64 {
+cpp unsafe fn GetTime(): f32
+fn GetTime(): f32 {
 	ret unsafe { cpp.GetTime() }
 }
 
@@ -37,7 +37,7 @@ fn PollInputEvents() {
 }
 
 // RLAPI void WaitTime(double seconds);                              // Wait for some time (halt program execution)
-cpp unsafe fn WaitTime(seconds: f64)
-fn WaitTime(seconds: f64) {
+cpp unsafe fn WaitTime(seconds: f32)
+fn WaitTime(seconds: f32) {
 	unsafe { cpp.WaitTime(seconds) }
 }
