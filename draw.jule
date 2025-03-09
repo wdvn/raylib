@@ -309,41 +309,41 @@ cpp unsafe fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f64, rotation
 fn DrawPolyLinesEx(center: Vector2, sides: i32, radius: f64, rotation: f64, lineThick: f64, color: Color) {
 	unsafe { cpp.DrawPolyLinesEx(center, sides, radius, rotation, lineThick, color) }
 }
+
 //**********************************************************************************************
 
-
 // RLAPI void DrawFPS(int posX, int posY);                                                     // Draw current FPS
-cpp unsafe fn DrawFPS(posX: i32, posY: i32);
+cpp unsafe fn DrawFPS(posX: i32, posY: i32)
 fn DrawFPS(posX: i32, posY: i32) {
-    unsafe { cpp.DrawFPS(posX, posY) }
+	unsafe { cpp.DrawFPS(posX, posY) }
 }
 
 // RLAPI void DrawText(const char *text, int posX, int posY, int fontSize, Color color);       // Draw text (using default font)
-cpp unsafe fn DrawText(text: *cpp.char, posX: i32, posY: i32, fontSize: i32, color: Color);
+cpp unsafe fn DrawText(text: *cpp.char, posX: i32, posY: i32, fontSize: i32, color: Color)
 fn DrawText(text: str, posX: i32, posY: i32, fontSize: i32, color: Color) {
-    unsafe { cpp.DrawText(strToCharPtr(text), posX, posY, fontSize, color) }
+	unsafe { cpp.DrawText(strToCharPtr(text), posX, posY, fontSize, color) }
 }
 
 // RLAPI void DrawTextEx(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint); // Draw text using font and additional parameters
-cpp unsafe fn DrawTextEx(font: Font, text: *cpp.char, position: Vector2, fontSize: f32, spacing: f32, tint: Color);
+cpp unsafe fn DrawTextEx(font: Font, text: *cpp.char, position: Vector2, fontSize: f32, spacing: f32, tint: Color)
 fn DrawTextEx(font: Font, text: str, position: Vector2, fontSize: f32, spacing: f32, tint: Color) {
-    unsafe { cpp.DrawTextEx(font, strToCharPtr(text), position, fontSize, spacing, tint) }
+	unsafe { cpp.DrawTextEx(font, strToCharPtr(text), position, fontSize, spacing, tint) }
 }
 
 // RLAPI void DrawTextPro(Font font, const char *text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint); // Draw text using Font and pro parameters (rotation)
-cpp unsafe fn DrawTextPro(font: Font, text: *cpp.char, position: Vector2, origin: Vector2, rotation: f32, fontSize: f32, spacing: f32, tint: Color);
+cpp unsafe fn DrawTextPro(font: Font, text: *cpp.char, position: Vector2, origin: Vector2, rotation: f32, fontSize: f32, spacing: f32, tint: Color)
 fn DrawTextPro(font: Font, text: str, position: Vector2, origin: Vector2, rotation: f32, fontSize: f32, spacing: f32, tint: Color) {
-    unsafe { cpp.DrawTextPro(font, strToCharPtr(text), position, origin, rotation, fontSize, spacing, tint) }
+	unsafe { cpp.DrawTextPro(font, strToCharPtr(text), position, origin, rotation, fontSize, spacing, tint) }
 }
 
 // RLAPI void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float fontSize, Color tint); // Draw one character (codepoint)
-cpp unsafe fn DrawTextCodepoint(font: Font, codepoint: i32, position: Vector2, fontSize: f32, tint: Color);
+cpp unsafe fn DrawTextCodepoint(font: Font, codepoint: i32, position: Vector2, fontSize: f32, tint: Color)
 fn DrawTextCodepoint(font: Font, codepoint: i32, position: Vector2, fontSize: f32, tint: Color) {
-    unsafe { cpp.DrawTextCodepoint(font, codepoint, position, fontSize, tint) }
+	unsafe { cpp.DrawTextCodepoint(font, codepoint, position, fontSize, tint) }
 }
 
 // RLAPI void DrawTextCodepoints(Font font, const int *codepoints, int codepointCount, Vector2 position, float fontSize, float spacing, Color tint); // Draw multiple character (codepoint)
-cpp unsafe fn DrawTextCodepoints(font: Font, codepoints: *i32, codepointCount: i32, position: Vector2, fontSize: f32, spacing: f32, tint: Color);
+cpp unsafe fn DrawTextCodepoints(font: Font, codepoints: *i32, codepointCount: i32, position: Vector2, fontSize: f32, spacing: f32, tint: Color)
 fn DrawTextCodepoints(font: Font, codepoints: []i32, codepointCount: i32, position: Vector2, fontSize: f32, spacing: f32, tint: Color) {
-    unsafe { cpp.DrawTextCodepoints(font, &codepoints[0], codepointCount, position, fontSize, spacing, tint) }
+	unsafe { cpp.DrawTextCodepoints(font, &codepoints[0], codepointCount, position, fontSize, spacing, tint) }
 }

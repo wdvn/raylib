@@ -46,14 +46,14 @@ fn OpenURL(url: str) {
 // NOTE: Following functions implemented in module [utils]
 //------------------------------------------------------------------
 // RLAPI void TraceLog(int logLevel, const char *text, ...)         // Show trace log messages (LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR...)
-cpp unsafe fn TraceLog(logLevel: i32, text: *cpp.char,info: ...*cpp.char)
+cpp unsafe fn TraceLog(logLevel: i32, text: *cpp.char, info: ...*cpp.char)
 fn TraceLog(logLevel: i32, text: str, info: ...str) {
 	unsafe {
 		let mut arr = make([]*cpp.char, 0, len(info))
 		for i in info {
 			arr = append(arr, strToCharPtr(info[i]))
 		}
-		cpp.TraceLog(logLevel,strToCharPtr(text), arr...)
+		cpp.TraceLog(logLevel, strToCharPtr(text), arr...)
 	}
 }
 
@@ -81,13 +81,12 @@ fn MemFree(ptr: *any) {
 	unsafe { cpp.MemFree(ptr) }
 }
 
-
 // Set custom callbacks
 // WARNING: Callbacks setup is intended for advanced users
 // RLAPI void SetTraceLogCallback(TraceLogCallback callback)         // Set custom trace log
 cpp unsafe fn SetTraceLogCallback(callback: any)
 fn SetTraceLogCallback(callback: any) {
-   //todo
+	//todo
 }
 
 // RLAPI void SetLoadFileDataCallback(LoadFileDataCallback callback) // Set custom file binary data loader
@@ -117,7 +116,7 @@ fn SetSaveFileTextCallback(callback: any) {
 // Files management functions
 // RLAPI unsigned char *LoadFileData(const char *fileName, int *dataSize) // Load file data as byte array (read)
 cpp unsafe fn LoadFileData(fileName: *cpp.char, dataSize: *i32): *u8
-fn LoadFileData(fileName: *cpp.char, dataSize: []i32): *u8{
+fn LoadFileData(fileName: *cpp.char, dataSize: []i32): *u8 {
 	ret unsafe { cpp.LoadFileData(fileName, &dataSize[0]) }
 }
 
