@@ -24,6 +24,11 @@ fn EndMode2D() {
 }
 
 // RLAPI void BeginMode3D(Camera3D camera);                          // Begin 3D mode with custom camera (3D)
+cpp unsafe fn BeginMode3D(camera: Camera3D)
+fn BeginMode3D(camera: Camera3D) {
+	unsafe { cpp.BeginMode3D(camera) }
+}
+
 // RLAPI void EndMode3D(void);                                       // Ends 3D mode and returns to default 2D orthographic mode
 cpp unsafe fn EndMode3D()
 fn EndMode3D() {
