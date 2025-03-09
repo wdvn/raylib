@@ -149,7 +149,7 @@ cpp struct Camera3D {
 	target:     Vector3 // Camera target it looks-at
 	up:         Vector3 // Camera up vector (rotation over its axis)
 	fovy:       f64     // Camera field-of-view aperture in Y (degrees) in perspective, used as near plane width in orthographic
-	projection: i32     // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
+	projection: int     // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
 }
 
 type Camera3D = cpp.Camera3D
