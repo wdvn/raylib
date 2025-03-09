@@ -1,0 +1,1 @@
+#pass "-I./include -L./lib -lraylib -lGL -lX11 -lpthread -lm -ldl -Wl,-rpath,./lib"
