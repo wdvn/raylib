@@ -1,0 +1,33 @@
+// Some basic Defines
+static PI: f32 = 3.14159265358979323846
+static DEG2RAD: f32 = PI / 180
+static RAD2DEG: f32 = 180 / PI
+
+// Some Basic Colors
+// NOTE: Custom raylib color palette for amazing visuals on WHITE background
+static LIGHTGRAY: Color = Color{200, 200, 200, 255} // Light Gray
+static GRAY: Color = Color{130, 130, 130, 255}      // Gray
+static DARKGRAY: Color = Color{80, 80, 80, 255}     // Dark Gray
+static YELLOW: Color = Color{253, 249, 0, 255}      // Yellow
+static GOLD: Color = Color{255, 203, 0, 255}        // Gold
+static ORANGE: Color = Color{255, 161, 0, 255}      // Orange
+static PINK: Color = Color{255, 109, 194, 255}      // Pink
+static RED: Color = Color{230, 41, 55, 255}         // Red
+static MAROON: Color = Color{190, 33, 55, 255}      // Maroon
+static GREEN: Color = Color{0, 228, 48, 255}        // Green
+static LIME: Color = Color{0, 158, 47, 255}         // Lime
+static DARKGREEN: Color = Color{0, 117, 44, 255}    // Dark Green
+static SKYBLUE: Color = Color{102, 191, 255, 255}   // Sky Blue
+static BLUE: Color = Color{0, 121, 241, 255}        // Blue
+static DARKBLUE: Color = Color{0, 82, 172, 255}     // Dark Blue
+static PURPLE: Color = Color{200, 122, 255, 255}    // Purple
+static VIOLET: Color = Color{135, 60, 190, 255}     // Violet
+static DARKPURPLE: Color = Color{112, 31, 126, 255} // Dark Purple
+static BEIGE: Color = Color{211, 176, 131, 255}     // Beige
+static BROWN: Color = Color{127, 106, 79, 255}      // Brown
+static DARKBROWN: Color = Color{76, 63, 47, 255}    // Dark Brown
+static WHITE: Color = Color{255, 255, 255, 255}     // White
+static BLACK: Color = Color{0, 0, 0, 255}           // Black
+static BLANK: Color = Color{0, 0, 0, 0}             // Blank (Transparent)
+static MAGENTA: Color = Color{255, 0, 255, 255}     // Magenta
+static RAYWHITE: Color = Color{245, 245, 245, 255}  // My own White (raylib logo)
