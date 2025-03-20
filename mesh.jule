@@ -1,0 +1,122 @@
+// Mesh management functions
+// RLAPI void UploadMesh(Mesh *mesh, bool dynamic);                                            // Upload mesh vertex data in GPU and provide VAO/VBO ids
+cpp unsafe fn UploadMesh(mesh: *Mesh, dynamic: bool)
+fn UploadMesh(mesh: *Mesh, dynamic: bool) {
+	unsafe { cpp.UploadMesh(mesh, dynamic) }
+}
+
+// RLAPI void UpdateMeshBuffer(Mesh mesh, int index, const void *data, int dataSize, int offset); // Update mesh vertex data in GPU for a specific buffer index
+cpp unsafe fn UpdateMeshBuffer(mesh: Mesh, index: i32, data: *any, dataSize: i32, offset: i32)
+fn UpdateMeshBuffer(mesh: Mesh, index: i32, data: *any, dataSize: i32, offset: i32) {
+	unsafe { cpp.UpdateMeshBuffer(mesh, index, data, dataSize, offset) }
+}
+
+// RLAPI void UnloadMesh(Mesh mesh);                                                           // Unload mesh data from CPU and GPU
+cpp unsafe fn UnloadMesh(mesh: Mesh)
+fn UnloadMesh(mesh: Mesh) {
+	unsafe { cpp.UnloadMesh(mesh) }
+}
+
+// RLAPI void DrawMesh(Mesh mesh, Material material, Matrix transform);                        // Draw a 3d mesh with material and transform
+cpp unsafe fn DrawMesh(mesh: Mesh, material: Material, transform: Matrix)
+fn DrawMesh(mesh: Mesh, material: Material, transform: Matrix) {
+	unsafe { cpp.DrawMesh(mesh, material, transform) }
+}
+
+// RLAPI void DrawMeshInstanced(Mesh mesh, Material material, const Matrix *transforms, int instances); // Draw multiple mesh instances with material and different transforms
+cpp unsafe fn DrawMeshInstanced(mesh: Mesh, material: Material, transforms: *Matrix, instances: i32)
+fn DrawMeshInstanced(mesh: Mesh, material: Material, transforms: *Matrix, instances: i32) {
+	unsafe { cpp.DrawMeshInstanced(mesh, material, transforms, instances) }
+}
+
+// RLAPI BoundingBox GetMeshBoundingBox(Mesh mesh);                                            // Compute mesh bounding box limits
+cpp unsafe fn GetMeshBoundingBox(mesh: Mesh): BoundingBox
+fn GetMeshBoundingBox(mesh: Mesh): BoundingBox {
+	ret unsafe { cpp.GetMeshBoundingBox(mesh) }
+}
+
+// RLAPI void GenMeshTangents(Mesh *mesh);                                                     // Compute mesh tangents
+cpp unsafe fn GenMeshTangents(mesh: *Mesh)
+fn GenMeshTangents(mesh: *Mesh) {
+	unsafe { cpp.GenMeshTangents(mesh) }
+}
+
+// RLAPI bool ExportMesh(Mesh mesh, const char *fileName);                                     // Export mesh data to file, returns true on success
+cpp unsafe fn ExportMesh(mesh: Mesh, fileName: *cpp.char): bool
+fn ExportMesh(mesh: Mesh, fileName: str): bool {
+	ret unsafe { cpp.ExportMesh(mesh, strToCharPtr(fileName)) }
+}
+
+// RLAPI bool ExportMeshAsCode(Mesh mesh, const char *fileName);                               // Export mesh as code file (.h) defining multiple arrays of vertex attributes
+cpp unsafe fn ExportMeshAsCode(mesh: Mesh, fileName: *cpp.char): bool
+fn ExportMeshAsCode(mesh: Mesh, fileName: str): bool {
+	ret unsafe { cpp.ExportMeshAsCode(mesh, strToCharPtr(fileName)) }
+}
+
+//********************************
+// Mesh generation functions
+// RLAPI Mesh GenMeshPoly(int sides, float radius);                                            // Generate polygonal mesh
+cpp unsafe fn GenMeshPoly(sides: i32, radius: f32): Mesh
+fn GenMeshPoly(sides: i32, radius: f32): Mesh {
+	ret unsafe { cpp.GenMeshPoly(sides, radius) }
+}
+
+// RLAPI Mesh GenMeshPlane(float width, float length, int resX, int resZ);                     // Generate plane mesh (with subdivisions)
+cpp unsafe fn GenMeshPlane(width: f32, length: f32, resX: i32, resZ: i32): Mesh
+fn GenMeshPlane(width: f32, length: f32, resX: i32, resZ: i32): Mesh {
+	ret unsafe { cpp.GenMeshPlane(width, length, resX, resZ) }
+}
+
+// RLAPI Mesh GenMeshCube(float width, float height, float length);                            // Generate cuboid mesh
+cpp unsafe fn GenMeshCube(width: f32, height: f32, length: f32): Mesh
+fn GenMeshCube(width: f32, height: f32, length: f32): Mesh {
+	ret unsafe { cpp.GenMeshCube(width, height, length) }
+}
+
+// RLAPI Mesh GenMeshSphere(float radius, int rings, int slices);                              // Generate sphere mesh (standard sphere)
+cpp unsafe fn GenMeshSphere(radius: f32, rings: i32, slices: i32): Mesh
+fn GenMeshSphere(radius: f32, rings: i32, slices: i32): Mesh {
+	ret unsafe { cpp.GenMeshSphere(radius, rings, slices) }
+}
+
+// RLAPI Mesh GenMeshHemiSphere(float radius, int rings, int slices);                          // Generate half-sphere mesh (no bottom cap)
+cpp unsafe fn GenMeshHemiSphere(radius: f32, rings: i32, slices: i32): Mesh
+fn GenMeshHemiSphere(radius: f32, rings: i32, slices: i32): Mesh {
+	ret unsafe { cpp.GenMeshHemiSphere(radius, rings, slices) }
+}
+
+// RLAPI Mesh GenMeshCylinder(float radius, float height, int slices);                         // Generate cylinder mesh
+cpp unsafe fn GenMeshCylinder(radius: f32, height: f32, slices: i32): Mesh
+fn GenMeshCylinder(radius: f32, height: f32, slices: i32): Mesh {
+	ret unsafe { cpp.GenMeshCylinder(radius, height, slices) }
+}
+
+// RLAPI Mesh GenMeshCone(float radius, float height, int slices);                             // Generate cone/pyramid mesh
+cpp unsafe fn GenMeshCone(radius: f32, height: f32, slices: i32): Mesh
+fn GenMeshCone(radius: f32, height: f32, slices: i32): Mesh {
+	ret unsafe { cpp.GenMeshCone(radius, height, slices) }
+}
+
+// RLAPI Mesh GenMeshTorus(float radius, float size, int radSeg, int sides);                   // Generate torus mesh
+cpp unsafe fn GenMeshTorus(radius: f32, size: f32, radSeg: i32, sides: i32): Mesh
+fn GenMeshTorus(radius: f32, size: f32, radSeg: i32, sides: i32): Mesh {
+	ret unsafe { cpp.GenMeshTorus(radius, size, radSeg, sides) }
+}
+
+// RLAPI Mesh GenMeshKnot(float radius, float size, int radSeg, int sides);                    // Generate trefoil knot mesh
+cpp unsafe fn GenMeshKnot(radius: f32, size: f32, radSeg: i32, sides: i32): Mesh
+fn GenMeshKnot(radius: f32, size: f32, radSeg: i32, sides: i32): Mesh {
+	ret unsafe { cpp.GenMeshKnot(radius, size, radSeg, sides) }
+}
+
+// RLAPI Mesh GenMeshHeightmap(Image heightmap, Vector3 size);                                 // Generate heightmap mesh from image data
+cpp unsafe fn GenMeshHeightmap(heightmap: Image, size: Vector3): Mesh
+fn GenMeshHeightmap(heightmap: Image, size: Vector3): Mesh {
+	ret unsafe { cpp.GenMeshHeightmap(heightmap, size) }
+}
+
+// RLAPI Mesh GenMeshCubicmap(Image cubicmap, Vector3 cubeSize);                               // Generate cubes-based map mesh from image data
+cpp unsafe fn GenMeshCubicmap(cubicmap: Image, cubeSize: Vector3): Mesh
+fn GenMeshCubicmap(cubicmap: Image, cubeSize: Vector3): Mesh {
+	ret unsafe { cpp.GenMeshCubicmap(cubicmap, cubeSize) }
+}
