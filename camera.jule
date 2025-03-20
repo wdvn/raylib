@@ -1,8 +1,8 @@
 // Camera System Functions (Module: rcamera)
 //------------------------------------------------------------------------------------
 // RLAPI void UpdateCamera(Camera *camera, int mode);      // Update camera position for selected mode
-cpp unsafe fn UpdateCamera(camera: *Camera, mode: i32);
-fn UpdateCamera(camera: *Camera, mode: i32) {
+cpp unsafe fn UpdateCamera(camera: *Camera, mode: int);
+fn UpdateCamera(camera: *Camera, mode: int) {
     unsafe { cpp.UpdateCamera(camera, mode) }
 }
 
