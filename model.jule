@@ -2,7 +2,7 @@
 // RLAPI Model LoadModel(const char *fileName);                                                // Load model from files (meshes and materials)
 cpp unsafe fn LoadModel(fileName: *cpp.char): Model
 fn LoadModel(fileName: str): Model {
-	ret unsafe { cpp.LoadModel(strTopCharPtr(fileName)) }
+	ret unsafe { cpp.LoadModel(strToCharPtr(fileName)) }
 }
 
 // RLAPI Model LoadModelFromMesh(Mesh mesh);                                                   // Load model from generated mesh (default material)
