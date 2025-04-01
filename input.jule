@@ -46,3 +46,72 @@ cpp unsafe fn SetExitKey(key: int)
 fn SetExitKey(key: int) {
 	unsafe { cpp.SetExitKey(key) }
 }
+
+// Input-related functions: gamepads
+// RLAPI bool IsGamepadAvailable(int gamepad);                                        // Check if a gamepad is available
+cpp unsafe fn IsGamepadAvailable(gamepad: int): bool
+fn IsGamepadAvailable(gamepad: int): bool {
+	ret unsafe { cpp.IsGamepadAvailable(gamepad) }
+}
+
+//TODO: update later
+// RLAPI const char *GetGamepadName(int gamepad);                                     // Get gamepad internal name id
+//cpp unsafe fn GetGamepadName(gamepad: int): *cpp.char
+//fn GetGamepadName(gamepad: int): str {
+//	let name = unsafe { cpp.GetGamepadName(gamepad) }
+//	ret unsafe { ptrCharToStr(name) }
+//}
+
+// RLAPI bool IsGamepadButtonPressed(int gamepad, int button);                        // Check if a gamepad button has been pressed once
+cpp unsafe fn IsGamepadButtonPressed(gamepad: int, button: int): bool
+fn IsGamepadButtonPressed(gamepad: int, button: int): bool {
+	ret unsafe { cpp.IsGamepadButtonPressed(gamepad, button) }
+}
+
+// RLAPI bool IsGamepadButtonDown(int gamepad, int button);                           // Check if a gamepad button is being pressed
+cpp unsafe fn IsGamepadButtonDown(gamepad: int, button: int): bool
+fn IsGamepadButtonDown(gamepad: int, button: int): bool {
+	ret unsafe { cpp.IsGamepadButtonDown(gamepad, button) }
+}
+
+// RLAPI bool IsGamepadButtonReleased(int gamepad, int button);                       // Check if a gamepad button has been released once
+cpp unsafe fn IsGamepadButtonReleased(gamepad: int, button: int): bool
+fn IsGamepadButtonReleased(gamepad: int, button: int): bool {
+	ret unsafe { cpp.IsGamepadButtonReleased(gamepad, button) }
+}
+
+// RLAPI bool IsGamepadButtonUp(int gamepad, int button);                             // Check if a gamepad button is NOT being pressed
+cpp unsafe fn IsGamepadButtonUp(gamepad: int, button: int): bool
+fn IsGamepadButtonUp(gamepad: int, button: int): bool {
+	ret unsafe { cpp.IsGamepadButtonUp(gamepad, button) }
+}
+
+// RLAPI int GetGamepadButtonPressed(void);                                           // Get the last gamepad button pressed
+cpp unsafe fn GetGamepadButtonPressed(): int
+fn GetGamepadButtonPressed(): int {
+	ret unsafe { cpp.GetGamepadButtonPressed() }
+}
+
+// RLAPI int GetGamepadAxisCount(int gamepad);                                        // Get gamepad axis count for a gamepad
+cpp unsafe fn GetGamepadAxisCount(gamepad: int): int
+fn GetGamepadAxisCount(gamepad: int): int {
+	ret unsafe { cpp.GetGamepadAxisCount(gamepad) }
+}
+
+// RLAPI float GetGamepadAxisMovement(int gamepad, int axis);                         // Get axis movement value for a gamepad axis
+cpp unsafe fn GetGamepadAxisMovement(gamepad: int, axis: int): f32
+fn GetGamepadAxisMovement(gamepad: int, axis: int): f32 {
+	ret unsafe { cpp.GetGamepadAxisMovement(gamepad, axis) }
+}
+
+// RLAPI int SetGamepadMappings(const char *mappings);                                // Set internal gamepad mappings (SDL_GameControllerDB)
+cpp unsafe fn SetGamepadMappings(mappings: *cpp.char): int
+fn SetGamepadMappings(mappings: str): int {
+	ret unsafe { cpp.SetGamepadMappings(strToCharPtr(mappings)) }
+}
+
+// RLAPI void SetGamepadVibration(int gamepad, float leftMotor, float rightMotor, float duration); // Set gamepad vibration for both motors (duration in seconds)
+cpp unsafe fn SetGamepadVibration(gamepad: int, leftMotor: f32, rightMotor: f32, duration: f32)
+fn SetGamepadVibration(gamepad: int, leftMotor: f32, rightMotor: f32, duration: f32) {
+	unsafe { cpp.SetGamepadVibration(gamepad, leftMotor, rightMotor, duration) }
+}
