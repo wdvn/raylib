@@ -78,10 +78,10 @@ type Rectangle = cpp.Rectangle
 #typedef
 cpp struct Image {
 	data:    any
-	width:   i32
-	height:  i32
-	mipmaps: i32
-	format:  i32
+	width:   int
+	height:  int
+	mipmaps: int
+	format:  int
 }
 
 type Image = cpp.Image
@@ -89,10 +89,10 @@ type Image = cpp.Image
 #typedef
 cpp struct Texture {
 	id:      u32
-	width:   i32
-	height:  i32
-	mipmaps: i32
-	format:  i32
+	width:   int
+	height:  int
+	mipmaps: int
+	format:  int
 }
 
 type Texture = cpp.Texture

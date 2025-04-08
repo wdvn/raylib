@@ -59,3 +59,41 @@ cpp unsafe fn UpdateTextureRec(texture: Texture2D, rec: Rectangle, pixels: cpp.V
 fn UpdateTextureRec(texture: Texture2D, rec: Rectangle, pixels: cpp.Void) {
     unsafe { cpp.UpdateTextureRec(texture, rec, pixels) }
 }
+
+//********************************************************
+// Texture drawing functions
+// RLAPI void DrawTexture(Texture2D texture, int posX, int posY, Color tint);                               // Draw a Texture2D
+cpp unsafe fn DrawTexture(texture: Texture2D, posX: int, posY: int, tint: Color);
+fn DrawTexture(texture: Texture2D, posX: int, posY: int, tint: Color) {
+    unsafe { cpp.DrawTexture(texture, posX, posY, tint) }
+}
+
+// RLAPI void DrawTextureV(Texture2D texture, Vector2 position, Color tint);                                // Draw a Texture2D with position defined as Vector2
+cpp unsafe fn DrawTextureV(texture: Texture2D, position: Vector2, tint: Color);
+fn DrawTextureV(texture: Texture2D, position: Vector2, tint: Color) {
+    unsafe { cpp.DrawTextureV(texture, position, tint) }
+}
+
+// RLAPI void DrawTextureEx(Texture2D texture, Vector2 position, float rotation, float scale, Color tint);  // Draw a Texture2D with extended parameters
+cpp unsafe fn DrawTextureEx(texture: Texture2D, position: Vector2, rotation: f32, scale: f32, tint: Color);
+fn DrawTextureEx(texture: Texture2D, position: Vector2, rotation: f32, scale: f32, tint: Color) {
+    unsafe { cpp.DrawTextureEx(texture, position, rotation, scale, tint) }
+}
+
+// RLAPI void DrawTextureRec(Texture2D texture, Rectangle source, Vector2 position, Color tint);            // Draw a part of a texture defined by a rectangle
+cpp unsafe fn DrawTextureRec(texture: Texture2D, source: Rectangle, position: Vector2, tint: Color);
+fn DrawTextureRec(texture: Texture2D, source: Rectangle, position: Vector2, tint: Color) {
+    unsafe { cpp.DrawTextureRec(texture, source, position, tint) }
+}
+
+// RLAPI void DrawTexturePro(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint); // Draw a part of a texture defined by a rectangle with 'pro' parameters
+cpp unsafe fn DrawTexturePro(texture: Texture2D, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: f32, tint: Color);
+fn DrawTexturePro(texture: Texture2D, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: f32, tint: Color) {
+    unsafe { cpp.DrawTexturePro(texture, source, dest, origin, rotation, tint) }
+}
+
+// RLAPI void DrawTextureNPatch(Texture2D texture, NPatchInfo nPatchInfo, Rectangle dest, Vector2 origin, float rotation, Color tint); // Draws a texture (or part of it) that stretches or shrinks nicely
+cpp unsafe fn DrawTextureNPatch(texture: Texture2D, nPatchInfo: NPatchInfo, dest: Rectangle, origin: Vector2, rotation: f32, tint: Color);
+fn DrawTextureNPatch(texture: Texture2D, nPatchInfo: NPatchInfo, dest: Rectangle, origin: Vector2, rotation: f32, tint: Color) {
+    unsafe { cpp.DrawTextureNPatch(texture, nPatchInfo, dest, origin, rotation, tint) }
+}

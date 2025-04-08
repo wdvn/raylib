@@ -202,8 +202,8 @@ fn DrawRingLines(center: Vector2, innerRadius: f32, outerRadius: f32, startAngle
 }
 
 // RLAPI void DrawRectangle(int posX, int posY, int width, int height, Color color);                        // Draw a color-filled rectangle
-cpp unsafe fn DrawRectangle(posX: i32, posY: i32, width: i32, height: i32, color: Color)
-fn DrawRectangle(posX: i32, posY: i32, width: i32, height: i32, color: Color) {
+cpp unsafe fn DrawRectangle(posX: int, posY: int, width: int, height: int, color: Color)
+fn DrawRectangle(posX: int, posY: int, width: int, height: int, color: Color) {
 	unsafe { cpp.DrawRectangle(posX, posY, width, height, color) }
 }
 
@@ -244,8 +244,8 @@ fn DrawRectangleGradientEx(rec: Rectangle, topLeft: Color, bottomLeft: Color, to
 }
 
 // RLAPI void DrawRectangleLines(int posX, int posY, int width, int height, Color color);                   // Draw rectangle outline
-cpp unsafe fn DrawRectangleLines(posX: i32, posY: i32, width: i32, height: i32, color: Color)
-fn DrawRectangleLines(posX: i32, posY: i32, width: i32, height: i32, color: Color) {
+cpp unsafe fn DrawRectangleLines(posX: int, posY: int, width: int, height: int, color: Color)
+fn DrawRectangleLines(posX: int, posY: int, width: int, height: int, color: Color) {
 	unsafe { cpp.DrawRectangleLines(posX, posY, width, height, color) }
 }
 
@@ -324,8 +324,8 @@ fn DrawFPS(posX: i32, posY: i32) {
 }
 
 // RLAPI void DrawText(const char *text, int posX, int posY, int fontSize, Color color);       // Draw text (using default font)
-cpp unsafe fn DrawText(text: *cpp.char, posX: i32, posY: i32, fontSize: i32, color: Color)
-fn DrawText(text: str, posX: i32, posY: i32, fontSize: i32, color: Color) {
+cpp unsafe fn DrawText(text: *cpp.char, posX: int, posY: int, fontSize: i32, color: Color)
+fn DrawText(text: str, posX: int, posY: int, fontSize: i32, color: Color) {
 	unsafe { cpp.DrawText(strToCharPtr(text), posX, posY, fontSize, color) }
 }
 

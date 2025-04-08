@@ -14,8 +14,8 @@ fn LoadImageRaw(fileName: str, width: i32, height: i32, format: i32, headerSize:
 
 //RLAPI Image LoadImageAnim(const char *fileName, int *frames);                                            // Load image sequence from file (frames appended to image.data)
 cpp unsafe fn LoadImageAnim(fileName: *cpp.char, frames: *i32): Image
-fn LoadImageAnim(fileName: str, frames: []i32): Image {
-	ret unsafe { cpp.LoadImageAnim(strToCharPtr(fileName), &frames[0]) }
+fn LoadImageAnim(fileName: str, frames: *i32): Image {
+	ret unsafe { cpp.LoadImageAnim(strToCharPtr(fileName), frames) }
 }
 
 //RLAPI Image LoadImageAnimFromMemory(const char *fileType, const unsigned char *fileData, int dataSize, int *frames); // Load image sequence from memory buffer
