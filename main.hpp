@@ -16,8 +16,12 @@
 
 //compile
 //clang++ main.cpp -o main -I./include -L./lib -lraylib -lGL -lX11 -lpthread -lm -ldl -Wl,-rpath,./lib
+
+#define __JULE_ENABLE__PRODUCTION
 #ifdef DEBUG
 #include <jule.hpp>
 #endif
 
 #include "raylib.h"
+using Void = const void*;
+

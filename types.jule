@@ -1,3 +1,4 @@
+use "std/jule"
 cpp type char: byte
 
 #typedef
@@ -403,3 +404,5 @@ cpp struct AutomationEventList {
 }
 
 type AutomationEventList = cpp.AutomationEventList
+
+cpp type Void: uintptr
