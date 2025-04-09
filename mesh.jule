@@ -5,6 +5,7 @@ fn UploadMesh(mesh: *Mesh, dynamic: bool) {
 	unsafe { cpp.UploadMesh(mesh, dynamic) }
 }
 
+//TODO: review later
 // RLAPI void UpdateMeshBuffer(Mesh mesh, int index, const void *data, int dataSize, int offset); // Update mesh vertex data in GPU for a specific buffer index
 cpp unsafe fn UpdateMeshBuffer(mesh: Mesh, index: i32, data: *any, dataSize: i32, offset: i32)
 fn UpdateMeshBuffer(mesh: Mesh, index: i32, data: *any, dataSize: i32, offset: i32) {

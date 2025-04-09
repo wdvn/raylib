@@ -30,12 +30,14 @@ fn GetShaderLocationAttrib(shader: Shader, attribName: str): i32 {
 	ret unsafe { cpp.GetShaderLocationAttrib(shader, strToCharPtr(attribName)) }
 }
 
+//TODO: review later
 // RLAPI void SetShaderValue(Shader shader, int locIndex, const void *value, int uniformType);               // Set shader uniform value
 cpp unsafe fn SetShaderValue(shader: Shader, locIndex: i32, value: *any, uniformType: i32)
 fn SetShaderValue(shader: Shader, locIndex: i32, value: []any, uniformType: i32) {
 	unsafe { cpp.SetShaderValue(shader, locIndex, &value[0], uniformType) }
 }
 
+//TODO: review later
 // RLAPI void SetShaderValueV(Shader shader, int locIndex, const void *value, int uniformType, int count);   // Set shader uniform value vector
 cpp unsafe fn SetShaderValueV(shader: Shader, locIndex: i32, value: *any, uniformType: i32, count: i32)
 fn SetShaderValueV(shader: Shader, locIndex: i32, value: *any, uniformType: i32, count: i32) {
