@@ -1,3 +1,4 @@
+cpp use "main.cpp"
 cpp use "main.hpp"
 
 unsafe fn strToCharPtr(s: str): *cpp.char {
@@ -27,6 +28,16 @@ unsafe fn ptrU8ToBytes(raw: *u8): []byte {
 	}
 	ret data
 }
-
+unsafe fn getLenCppChar(ch: *cpp.char): int {
+	if ch == nil {
+		ret 0
+	}
+	let mut out: int = 0
+	let mut i = 0
+	for int(ch[i]) != 0; i++ {
+		out = i
+	}
+	ret out
+}
 //********************************************************
 // Draw function

@@ -21,7 +21,8 @@
 #ifdef DEBUG
 #include <jule.hpp>
 #endif
-
+#include <vector>
 #include "raylib.h"
 using Void = const void*;
 
+Void ConvertBytesToVoidPtr(const char* byteArray, int size);
