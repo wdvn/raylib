@@ -77,7 +77,7 @@ type Rectangle = cpp.Rectangle
 
 #typedef
 cpp struct Image {
-	data:    any
+	data:    *unsafe
 	width:   int
 	height:  int
 	mipmaps: int
@@ -406,3 +406,4 @@ cpp struct AutomationEventList {
 type AutomationEventList = cpp.AutomationEventList
 
 cpp type Void: uintptr
+type Void = cpp.Void
