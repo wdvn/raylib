@@ -32,16 +32,16 @@ fn GetShaderLocationAttrib(shader: Shader, attribName: str): i32 {
 
 //TODO: review later
 // RLAPI void SetShaderValue(Shader shader, int locIndex, const void *value, int uniformType);               // Set shader uniform value
-cpp unsafe fn SetShaderValue(shader: Shader, locIndex: i32, value: *any, uniformType: i32)
-fn SetShaderValue(shader: Shader, locIndex: i32, value: []any, uniformType: i32) {
-	unsafe { cpp.SetShaderValue(shader, locIndex, &value[0], uniformType) }
+cpp unsafe fn SetShaderValue(shader: Shader, locIndex: i32, value: cpp.Void, uniformType: i32)
+fn SetShaderValue(shader: Shader, locIndex: i32, value: cpp.Void, uniformType: i32) {
+	unsafe { cpp.SetShaderValue(shader, locIndex, value, uniformType) }
 }
 
 //TODO: review later
 // RLAPI void SetShaderValueV(Shader shader, int locIndex, const void *value, int uniformType, int count);   // Set shader uniform value vector
-cpp unsafe fn SetShaderValueV(shader: Shader, locIndex: i32, value: *any, uniformType: i32, count: i32)
-fn SetShaderValueV(shader: Shader, locIndex: i32, value: *any, uniformType: i32, count: i32) {
-	unsafe { cpp.SetShaderValueV(shader, locIndex, &value[0], uniformType, count) }
+cpp unsafe fn SetShaderValueV(shader: Shader, locIndex: i32, value: cpp.Void, uniformType: i32, count: i32)
+fn SetShaderValueV(shader: Shader, locIndex: i32, value: cpp.Void, uniformType: i32, count: i32) {
+	unsafe { cpp.SetShaderValueV(shader, locIndex, value, uniformType, count) }
 }
 
 // RLAPI void SetShaderValueMatrix(Shader shader, int locIndex, Matrix mat);         // Set shader uniform value (matrix 4x4)
