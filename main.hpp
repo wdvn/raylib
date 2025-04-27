@@ -23,6 +23,7 @@
 #endif
 #include <vector>
 #include "raylib.h"
+#include "raymath.h"
 using Void = const void*;
 
 Void ConvertBytesToVoidPtr(const char* byteArray, int size);
