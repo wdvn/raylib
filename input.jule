@@ -115,3 +115,88 @@ cpp unsafe fn SetGamepadVibration(gamepad: int, leftMotor: f32, rightMotor: f32,
 fn SetGamepadVibration(gamepad: int, leftMotor: f32, rightMotor: f32, duration: f32) {
 	unsafe { cpp.SetGamepadVibration(gamepad, leftMotor, rightMotor, duration) }
 }
+
+//*****************************************MOUSE***************************************************
+// RLAPI bool IsMouseButtonPressed(int button);                  // Check if a mouse button has been pressed once
+cpp unsafe fn IsMouseButtonPressed(button: int): bool
+fn IsMouseButtonPressed(button: MouseButton): bool {
+    ret unsafe { cpp.IsMouseButtonPressed(int(button)) }
+}
+
+// RLAPI bool IsMouseButtonDown(int button);                     // Check if a mouse button is being pressed
+cpp unsafe fn IsMouseButtonDown(button: int): bool
+fn IsMouseButtonDown(button: MouseButton): bool {
+    ret unsafe { cpp.IsMouseButtonDown(int(button)) }
+}
+
+// RLAPI bool IsMouseButtonReleased(int button);                 // Check if a mouse button has been released once
+cpp unsafe fn IsMouseButtonReleased(button: int): bool
+fn IsMouseButtonReleased(button: MouseButton): bool {
+    ret unsafe { cpp.IsMouseButtonReleased(int(button)) }
+}
+
+// RLAPI bool IsMouseButtonUp(int button);                       // Check if a mouse button is NOT being pressed
+cpp unsafe fn IsMouseButtonUp(button: int): bool
+fn IsMouseButtonUp(button: MouseButton): bool {
+    ret unsafe { cpp.IsMouseButtonUp(int(button)) }
+}
+
+// RLAPI int GetMouseX(void);                                    // Get mouse position X
+cpp unsafe fn GetMouseX(): int
+fn GetMouseX(): int {
+    ret unsafe { cpp.GetMouseX() }
+}
+
+// RLAPI int GetMouseY(void);                                    // Get mouse position Y
+cpp unsafe fn GetMouseY(): int
+fn GetMouseY(): int {
+    ret unsafe { cpp.GetMouseY() }
+}
+
+// RLAPI Vector2 GetMousePosition(void);                         // Get mouse position XY
+cpp unsafe fn GetMousePosition(): Vector2
+fn GetMousePosition(): Vector2 {
+    ret unsafe { cpp.GetMousePosition() }
+}
+
+// RLAPI Vector2 GetMouseDelta(void);                            // Get mouse delta between frames
+cpp unsafe fn GetMouseDelta(): Vector2
+fn GetMouseDelta(): Vector2 {
+    ret unsafe { cpp.GetMouseDelta() }
+}
+
+// RLAPI void SetMousePosition(int x, int y);                    // Set mouse position XY
+cpp unsafe fn SetMousePosition(x: int, y: int)
+fn SetMousePosition(x: int, y: int) {
+    unsafe { cpp.SetMousePosition(x, y) }
+}
+
+// RLAPI void SetMouseOffset(int offsetX, int offsetY);          // Set mouse offset
+cpp unsafe fn SetMouseOffset(offsetX: int, offsetY: int)
+fn SetMouseOffset(offsetX: int, offsetY: int) {
+    unsafe { cpp.SetMouseOffset(offsetX, offsetY) }
+}
+
+// RLAPI void SetMouseScale(float scaleX, float scaleY);         // Set mouse scaling
+cpp unsafe fn SetMouseScale(scaleX: f32, scaleY: f32)
+fn SetMouseScale(scaleX: f32, scaleY: f32) {
+    unsafe { cpp.SetMouseScale(scaleX, scaleY) }
+}
+
+// RLAPI float GetMouseWheelMove(void);                          // Get mouse wheel movement for X or Y, whichever is larger
+cpp unsafe fn GetMouseWheelMove(): f32
+fn GetMouseWheelMove(): f32 {
+    ret unsafe { cpp.GetMouseWheelMove() }
+}
+
+// RLAPI Vector2 GetMouseWheelMoveV(void);                       // Get mouse wheel movement for both X and Y
+cpp unsafe fn GetMouseWheelMoveV(): Vector2
+fn GetMouseWheelMoveV(): Vector2 {
+    ret unsafe { cpp.GetMouseWheelMoveV() }
+}
+
+// RLAPI void SetMouseCursor(int cursor);                        // Set mouse cursor
+cpp unsafe fn SetMouseCursor(cursor: int)
+fn SetMouseCursor(cursor: MouseCursor){
+    unsafe { cpp.SetMouseCursor(int(cursor)) }
+}
