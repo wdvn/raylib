@@ -1,8 +1,3 @@
-// Some basic Defines
-static PI: f32 = 3.14159265358979323846
-static DEG2RAD: f32 = PI / 180
-static RAD2DEG: f32 = 180 / PI
-
 // Some Basic Colors
 // NOTE: Custom raylib color palette for amazing visuals on WHITE background
 static LIGHTGRAY: Color = Color{200, 200, 200, 255} // Light Gray
