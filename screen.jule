@@ -57,20 +57,20 @@ fn IsWindowResized(): bool {
 }
 
 // RLAPI bool IsWindowState(unsigned int flag);                      // Check if one specific window flag is enabled
-cpp unsafe fn IsWindowState(flag: uint): bool
-fn IsWindowState(flag: uint): bool {
+cpp unsafe fn IsWindowState(flag: u32): bool
+fn IsWindowState(flag: u32): bool {
 	ret unsafe { cpp.IsWindowState(flag) }
 }
 
 // RLAPI void SetWindowState(unsigned int flags);                    // Set window configuration state using flags
-cpp unsafe fn SetWindowState(flags: uint)
-fn SetWindowState(flags: uint) {
+cpp unsafe fn SetWindowState(flags: u32)
+fn SetWindowState(flags: u32) {
 	unsafe { cpp.SetWindowState(flags) }
 }
 
 // RLAPI void ClearWindowState(unsigned int flags);                  // Clear window configuration state flags
-cpp unsafe fn ClearWindowState(flags: uint)
-fn ClearWindowState(flags: uint) {
+cpp unsafe fn ClearWindowState(flags: u32)
+fn ClearWindowState(flags: u32) {
 	unsafe { cpp.ClearWindowState(flags) }
 }
 

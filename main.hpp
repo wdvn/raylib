@@ -24,6 +24,7 @@
 #include <vector>
 #include "raylib.h"
 #include "raymath.h"
+#include "rlgl.h"
 using Void = const void*;
 
 Void ConvertBytesToVoidPtr(const char* byteArray, int size);
